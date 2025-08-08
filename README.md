@@ -45,6 +45,6 @@ This is a full-stack E-Commerce web application that allows users to browse prod
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/ecommerce-app.git
+git clone https://github.com/kandelmilan/ecommerce-app.git
 cd ecommerce-app
 ```
