@@ -1,14 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
+import Home from "./pages/Home/Home";
+import ProductCard from "./component/ProductCard";
+import { DiVim } from "react-icons/di";
+
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<div>THis is home page</div>} />
-          <Route path="products" element={<div>THis is all product page</div>} />
+          <Route index element={<Home/>}/>
+          <Route path="products" element={<>hello</>}/>
         </Route>
       </Routes>
     </>
@@ -16,4 +20,3 @@ function App() {
 }
 
 export default App;
-  

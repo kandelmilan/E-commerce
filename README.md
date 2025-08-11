@@ -46,5 +46,5 @@ This is a full-stack E-Commerce web application that allows users to browse prod
 
 ```bash
 git clone https://github.com/kandelmilan/ecommerce-app.git
-cd ecommerce-app
+cd ecommerce-
 ```
