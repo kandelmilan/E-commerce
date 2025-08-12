@@ -11,7 +11,7 @@ import { CiSearch } from "react-icons/ci";
 function Header() {
   return (
     <div>
-      <header>
+      <header className="">
         {/* <div className="bg-background hidden md:block">
           <div className="container flex justify-between text-white items-center py-2"> */}
            <div className="bg-background">
