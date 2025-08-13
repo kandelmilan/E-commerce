@@ -24,7 +24,7 @@ function Header() {
                   <p>tradig@gmail.com</p>
                 </a>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="md:flex items-center gap-2">
                 <MdOutlinePhoneInTalk className="cursor-pointer" />
                 <a href="tel:+1234567890">
                   {" "}
@@ -33,7 +33,7 @@ function Header() {
               </div>
             </div>
 
-            <div className="flex items-center gap-10">
+            <div className="hidden md:flex items-center gap-10">
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-2">
                   <p>English</p>
@@ -62,7 +62,7 @@ function Header() {
           </div>
         </div>
 
-        <section className=" flex justify-between items-center container  mx-auto mt-3 mb-3">
+        <section className="hidden md:flex justify-between items-center container  mx-auto mt-3 mb-3">
           <div className="flex items-center gap-24">
             <h1 className="font-[600] text-[Josefin Sans] text-[34px]  ">Hekto</h1>
             <nav className="flex items-center gap-5 list-none">
