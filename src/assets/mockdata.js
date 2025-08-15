@@ -56,3 +56,80 @@ export
 
 
   
+
+export const latestProducts = [
+  {
+  title: "Stylish Chair",
+  price: "99.99",
+  image: chair4,
+  discountPrice: "79.99",
+  id: 1,
+  },{
+    id: 2,
+  title: "Stylish Chair",
+  price: "99.99",
+  image: chair6,
+  discountPrice: "79.99",
+  },
+  {
+    id: 3,
+  title: "Stylish Chair",
+  price: "99.99",
+  image: chair5,
+  discountPrice: "79.99",
+  },
+  {
+    id: 4,
+  title: "Stylish Chair",
+  price: "99.99",
+  image: chair3,
+  discountPrice: "79.99",
+  },
+  {
+    id: 5,
+  title: "Stylish Chair",
+  price: "99.99",
+  image:chair1,
+  discountPrice: "79.99",
+  },
+  {
+    id: 6,
+  title: "Stylish Chair",
+  price: "99.99",
+  image: chair2,
+  discountPrice: "79.99",
+  },
+
+
+];
+
+export const TrendingProduct = [
+  {
+    id: 1,
+    name: "ErgoComfort Office Chair",
+    discountPrice: 129.99,
+    actualPrice: 159.99,
+    image: chair4
+  },
+  {
+    id: 2,
+    name: "Scandi Wooden Armchair",
+    discountPrice: 179.00,
+    actualPrice: 199.00,
+    image:chair5
+  },
+  {
+    id: 3,
+    name: "Velvet Luxe Accent Chair",
+    discountPrice: 210.50,
+    actualPrice: 249.00,
+    image: chair6
+  },
+  {
+    id: 4,
+    name: "Outdoor Patio Lounge Chair",
+    discountPrice: 95.00,
+    actualPrice: 119.00,
+    image: chair1
+  }
+];

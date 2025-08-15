@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router';
 function ProductCard({ data }) {
     const navigate= useNavigate();
     return (
-        
         <div className='h-[266px] w-[360px] my-3 cursor-pointer hover:scale-[1.05] ' onClick={() =>navigate(`/product/${data.id}`)}> 
             <div className=' bg-[#F7F7F7] h-[230px] flex items-center justify-center group relative '>
                 <img src={data.image} className="h-[200px] aspect-square object-fit" alt="" />
@@ -25,11 +24,7 @@ function ProductCard({ data }) {
                     <p className='text-red-500 line-through'>$ {data.price}</p>
                 </div>
             </div>
-
-
-
         </div>
-         
     )
 }
 
