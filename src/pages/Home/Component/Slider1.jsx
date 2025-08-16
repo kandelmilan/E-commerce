@@ -10,29 +10,31 @@ function SimpleSlider() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay:true,
-    autoplaySpeed: 4000
+    autoplay: true,
+    autoplaySpeed: 3000
   };
   return (
-   <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4">
       <h2 className="text-[34px] font-bold mb-8 mt-10  text-primary text-center">
         Products
       </h2>
 
       <Slider {...settings}>
         {ProductData.map((el, i) => (
-          <div key={i} className="px-4"> {/* wider gap between cards */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition-transform w-[370px] mx-auto">
+          <div key={i} className="px-2"> {/* reduced padding for better gap control */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition-transform duration-300 w-full max-w-[320px] mx-auto">
               <img
                 src={el.img}
                 alt={el.name}
-                className="h-[260px] w-[370]  object-cover mx-auto"
+                className="h-[220px] w-full object-cover"
               />
               <h1 className="text-lg font-medium text-secondary text-center p-4">
                 {el.name}
               </h1>
-              <h3 className="text-md font-medium text-center ">{el.code}</h3>
-              <span className="text-sm font-medium block text-center pb-2">{el.price}</span>
+              <h3 className="text-md font-medium text-center">{el.code}</h3>
+              <span className="text-sm font-medium block text-center pb-4">
+                {el.price}
+              </span>
             </div>
           </div>
         ))}
@@ -42,7 +44,7 @@ function SimpleSlider() {
   );
 }
 
- export default SimpleSlider;
+export default SimpleSlider;
 
 // import React from "react";
 // import Slider from "react-slick";
@@ -74,21 +76,21 @@ function SimpleSlider() {
 
 
 //   return (
-    // <div className="p-4">
-    //   <h2 className="text-xl font-bold mb-4">Products</h2>
-    //   <Slider {...settings}>
-    //     {ProductDatatData.map((el,i) => (
+// <div className="p-4">
+//   <h2 className="text-xl font-bold mb-4">Products</h2>
+//   <Slider {...settings}>
+//     {ProductDatatData.map((el,i) => (
 
-    //       <div key={i} >
-    //         <div className="border rounded-lg p-4 text-center">
-    //           <img src={el.img} alt="" className="mx-auto mb-2" />
-    //           <h3 className="font-medium">{el.name}</h3>
-    //         </div>
-    //       </div>
+//       <div key={i} >
+//         <div className="border rounded-lg p-4 text-center">
+//           <img src={el.img} alt="" className="mx-auto mb-2" />
+//           <h3 className="font-medium">{el.name}</h3>
+//         </div>
+//       </div>
 
-    //     ))}
-    //   </Slider>
-    // </div>
+//     ))}
+//   </Slider>
+// </div>
 //   );
 // }
 

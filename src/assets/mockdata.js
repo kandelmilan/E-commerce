@@ -133,3 +133,24 @@ export const TrendingProduct = [
     image: chair1
   }
 ];
+
+export const showcaseProducts = [
+  {
+    id: 1,
+    image: chair4,
+    name: 'Executive Seat chair',
+    price: '32.00',
+  },
+  {
+    id: 2,
+    image: chair2,
+    name: 'Executive Seat chair',
+    price: '32.00',
+  },
+  {
+    id: 3,
+    image: chair6,
+    name: 'Executive Seat chair',
+    price: '32.00',
+  },
+];

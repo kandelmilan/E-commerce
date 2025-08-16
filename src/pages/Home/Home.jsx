@@ -9,7 +9,7 @@ import premium from '../../assets/image/premium.png'
 import cashback from '../../assets/image/cashback.png'
 import free from '../../assets/image/free.png'
 import Sofa from "../../assets/image/Shopa.png"
-import { TrendingProduct } from "../../assets/mockdata"
+import ProductPage from './Component/ProductPage'
 
 
 
@@ -139,29 +139,7 @@ function Home() {
 
 
 
-      <h1 className='text-primary text-[42px] font-[700] text-center mt-10'>Trending Product</h1>
-      <section className="grid justify-items-center mt-10 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8">
-        {TrendingProduct.map((el, i) => (
-          <div
-            key={i}
-            className="w-full max-w-[250px] bg-white text-center border border-gray-100 rounded-xl shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-          >
-            <img
-              src={el.image}
-              alt={el.name}
-              className="w-full h-[200px] object-contain p-4"
-            />
-            <div className="pb-6">
-              <h3 className="text-[16px] font-medium text-indigo-900">{el.name}</h3>
-              <div className="flex justify-center items-center gap-3 mt-2">
-                <span className="text-gray-400 line-through text-sm">${el.actualPrice}</span>
-                <span className="text-[#03045E] font-bold text-lg">${el.discountPrice}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
+    {<ProductPage/>}
 
 
 
