@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Slider from "../Home/Component/Slider"
 import { Link } from 'react-router-dom'
-import { latestProducts } from "../../assets/mockdata"
+import { latestProducts, TrendingProduct } from "../../assets/mockdata"
 import ProductCard from "../ProductPage/ProductCard"
 import Slider1 from './Component/Slider1'
 import support from '../../assets/image/support.png'
@@ -9,8 +9,8 @@ import premium from '../../assets/image/premium.png'
 import cashback from '../../assets/image/cashback.png'
 import free from '../../assets/image/free.png'
 import Sofa from "../../assets/image/Shopa.png"
-import ProductPage from './Component/ProductPage'
-
+import Images1 from "../../assets/image/Discount.png"
+import ProductPage from './ProductPage'
 
 
 function Home() {
@@ -52,6 +52,8 @@ function Home() {
           })
         }
       </section>
+
+
       <section className="container mx-auto">
         <h1 className="text-[32px] text-center text-primary font-bold mt-10">
           What Shopex Offer!
@@ -139,8 +141,80 @@ function Home() {
 
 
 
-    {<ProductPage/>}
+      {<ProductPage />}
 
+
+      <section>
+        <div className="flex flex-col items-center justify-center mt-10 bg-white px-6">
+          {/* Title Section */}
+          <h2 className="text-[40px] font-bold text-indigo-900 mb-4">Discount Item</h2>
+          <div className="flex gap-4 mb-12 text-sm">
+            <a href="#" className="text-pink-600">
+              Wood Chair
+            </a>
+            <span className="text-gray-400">•</span>
+            <a href="#" className="text-indigo-900 hover:text-pink-600">
+              Plastic Chair
+            </a>
+            <span className="text-gray-400">•</span>
+            <a href="#" className="text-indigo-900 hover:text-pink-600">
+              Sofa Collection
+            </a>
+          </div>
+
+          {/* Content Section */}
+          <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl">
+            {/* Left Side */}
+            <div className="flex-1 space-y-6">
+              <h3 className="text-2xl font-bold text-indigo-900">
+                20% Discount Of All Products
+              </h3>
+              <h4 className="text-pink-600 font-semibold">Eams Sofa Compact</h4>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
+                feugiat habitasse nec, bibendum condimentum.
+              </p>
+
+              {/* Features List */}
+              <div className="grid grid-cols-2 gap-3 text-gray-500 text-sm">
+                <p className="flex items-center gap-2">
+                  <span className="text-indigo-900 font-bold">✔</span> Material
+                  expose like metals
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="text-indigo-900 font-bold">✔</span> Clear lines
+                  and geomatric figures
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="text-indigo-900 font-bold">✔</span> Simple neutral
+                  colours
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="text-indigo-900 font-bold">✔</span> Material
+                  expose like metals
+                </p>
+              </div>
+
+              {/* Button */}
+              <button className="primary-btn">
+                Shop Now
+              </button>
+            </div>
+
+            {/* Right Side (Image) */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-pink-100 rounded-full scale-125 -z-10"></div>
+                <img
+                  src={Images1}
+                  alt="Chair"
+                  className="w-80 object-contain relative"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 

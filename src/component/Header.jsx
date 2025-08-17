@@ -8,7 +8,12 @@ import { BiHeartSquare } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
+import { useSelector } from "react-redux";
 function Header() {
+  const user=useSelector((state)=>
+    state.user
+  )
+  console.log("this is the user",user)
   return (
     <div>
       <header className="">
@@ -44,9 +49,15 @@ function Header() {
                   <FaChevronDown />
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <p>Login</p>
-                  <FaRegUser />
+               <div>
+                  {
+                    user.userName ? user.userName : (
+                      <div className="flex gap-2 items-center">
+                        <p>Login</p>
+                        <FaRegUser />
+                         </div>)
+                     
+                  }
                 </div>
                 <div className="flex items-center gap-2">
                   <p>Wishlist</p>
@@ -67,11 +78,15 @@ function Header() {
             <h1 className="font-[600] text-[Josefin Sans] text-[34px]  ">Hekto</h1>
             <nav className="flex items-center gap-5 list-none">
               <li className="flex items-center text-[#FB2E86]">Home <IoIosArrowDown /></li>
-              <li>Pages</li>
-              <li>Products</li>
-              <li>Blogs</li>
-              <li>Shop</li>
-              <li>Contact</li>
+             
+             <li>pages</li>
+             <li>Products</li>
+             <li>Blogs</li>
+              {/* <Link>Pages</Link>
+              <Link>Products</Link>
+              <Link>Blogs</Link>
+              <Link>Shop</Link>
+              <Link>Contact</Link> */}
             </nav>
           </div>
 

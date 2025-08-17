@@ -4,7 +4,13 @@ import chair2 from "./image/chair2.png";
 import chair3 from "./image/chair3.png";
 import chair4 from "./image/chair4.png";
 import chair5 from "./image/chair5.png";
+import chair10 from "./image/chair10.png";
+import chair11 from "./image/chair11.png";
+import chair12 from "./image/chair12.png";
+import chair13 from "./image/chair13.png";
+import chair14 from "./image/chair14.png";
 import chair6 from "./image/chair6.png";
+
 
 
 export const BannerData = [
@@ -26,7 +32,7 @@ export const BannerData = [
     image: banner,
 
   }, {
-    id: 1,
+    id: 3,
     title: "Discover the Latest Trends",
     subtitle: "Shop our new arrivals and exclusive offers",
     description:
@@ -34,7 +40,7 @@ export const BannerData = [
     image: banner,
 
   }, {
-    id: 1,
+    id: 4,
     title: "Discover the Latest Trends",
     subtitle: "Shop our new arrivals and exclusive offers",
     description:
@@ -137,19 +143,19 @@ export const TrendingProduct = [
 export const showcaseProducts = [
   {
     id: 1,
-    image: chair4,
+    image: chair10,
     name: 'Executive Seat chair',
     price: '32.00',
   },
   {
     id: 2,
-    image: chair2,
+    image: chair11,
     name: 'Executive Seat chair',
     price: '32.00',
   },
   {
     id: 3,
-    image: chair6,
+    image: chair12,
     name: 'Executive Seat chair',
     price: '32.00',
   },
