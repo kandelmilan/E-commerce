@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Slider from "../Home/Component/Slider"
 import { Link } from 'react-router-dom'
-import { latestProducts, TrendingProduct } from "../../assets/mockdata"
+import { latestBlog, latestProducts, TrendingProduct } from "../../assets/mockdata"
 import ProductCard from "../ProductPage/ProductCard"
 import Slider1 from './Component/Slider1'
 import support from '../../assets/image/support.png'
@@ -11,7 +11,9 @@ import free from '../../assets/image/free.png'
 import Sofa from "../../assets/image/Shopa.png"
 import Images1 from "../../assets/image/Discount.png"
 import ProductPage from './ProductPage'
-
+import background from "../../assets/image/background.png"
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaPenFancy } from "react-icons/fa";
 
 function Home() {
   return (
@@ -216,10 +218,56 @@ function Home() {
         </div>
       </section>
 
+      <section className="flex justify-center items-center py-10">
+        <div
+          className="w-[1230px] h-[462px] flex flex-col justify-center items-center shadow-lg bg-cover bg-center text-center px-6"
+          style={{ backgroundImage: `url(${background})` }}
+        >
+          <h1 className="text-primary text-3xl md:text-4xl font-bold max-w-2xl leading-snug">
+            Get Latest Updates by Subscribing to Our Newsletter
+          </h1>
+          <button className="primary-btn mt-4">
+            Shop Now
+          </button>
+        </div>
+      </section>
 
 
-
-
+      {/* Latest-Blog */}
+      <section className="py-12">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-primary">Latest Blog</h1>
+        </div>
+        <div className="flex flex-wrap justify-center gap-6">
+          {latestBlog.map((data) => (
+            <div
+              key={data.id}
+              className="max-w-sm bg-white rounded-lg shadow-md p-4"
+            >
+              <img
+                src={data.image}
+                alt="blog"
+                className="w-full h-56 object-cover rounded-md"
+              />
+              <div className="mt-4 flex items-center gap-2 text-sm text-gray-600">
+                <span className="flex items-center gap-1 text-primary">
+                  <FaPenFancy /> {data.title}
+                </span>
+                <span className="flex items-center gap-1">
+                  <FaRegCalendarAlt /> {data.Date}
+                </span>
+              </div>
+              <h2 className="mt-2 text-lg font-bold text-[#1D1D4E]">
+                {data.subHeading}
+              </h2>
+              <p className="mt-2 text-gray-500 text-sm">{data.description}</p>
+              <a href="#" className="mt-3 inline-block text-sm text-[#1D1D4E] underline">
+                Read More
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
 
     </div>
 

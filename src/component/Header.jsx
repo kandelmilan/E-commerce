@@ -13,8 +13,8 @@ function Header() {
   const user=useSelector((state)=>
     state.user
   )
-  console.log("this is the user",user)
-  return (
+
+return(
     <div>
       <header className="">
         {/* <div className="bg-background hidden md:block">
@@ -99,5 +99,6 @@ function Header() {
     </div>
   );
 }
+
 
 export default Header;

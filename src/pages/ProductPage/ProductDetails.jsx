@@ -3,15 +3,38 @@ import { useParams } from "react-router-dom";
 import { latestProducts } from "../../assets/mockdata";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import Breadcrum from "../../component/BreadCrum";
 
-function ProductDetails({ addToCart }) {
+// function ProductDetails({ product }) {
+//   const dispatch = useDispatch();
+
+function ProductDetails() {
   const { id } = useParams();
   const product = latestProducts.find((p) => p.id === parseInt(id));
 
   if (!product) return <h2 className="text-center text-xl mt-10">Product not found</h2>;
 
   return (
+    
+
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 bg-white rounded-2xl shadow-md">
+      {/* Product Details */}
+         <div className="bg-[#F6F5FF] w-[1235px] h-[280px] conatainer">
+            <h1 className="font-bold text-[24px] p-16 sm:text-[28px] lg:text-[35px] text-primary leading-snug">Product Details</h1>
+            <Breadcrum/>
+        </div>
+        <br />
+        {/* <div>
+
+      <button
+        onClick={() => dispatch(addToCart(product))}
+        className="bg-blue-600 text-white px-6 py-2 rounded"
+      >
+        Add To Cart
+      </button>
+    </div> */}
+
       {/* Left side: Images */}
       <div className="flex gap-4">
         {/* Thumbnail column */}
@@ -90,6 +113,6 @@ function ProductDetails({ addToCart }) {
       </div>
     </div>
   );
-}
 
+}
 export default ProductDetails;

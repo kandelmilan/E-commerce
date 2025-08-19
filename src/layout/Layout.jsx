@@ -4,11 +4,13 @@ import Header from '../component/Header'
 import Footer from '../component/Footer'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../redux/Reducers/userSlice'
+import useFetch from '../hook/useFetch'
 
 
 
 function Layout() {
    const dispatch = useDispatch()
+   const {data}=useFetch("product")
   return (
     <>
     <Header/>

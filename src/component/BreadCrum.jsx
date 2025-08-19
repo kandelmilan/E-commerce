@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const AppBreadcrumbs = () => {
+const Breadcrum = () => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter(Boolean);
 
@@ -43,4 +43,4 @@ const AppBreadcrumbs = () => {
   );
 };
 
-export default AppBreadcrumbs;
+export default Breadcrum;
