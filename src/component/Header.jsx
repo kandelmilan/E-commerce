@@ -6,21 +6,21 @@ import { FaChevronDown } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa";
 import { BiHeartSquare } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 function Header() {
-  const user=useSelector((state)=>
+  const user = useSelector((state) =>
     state.user
   )
 
-return(
+  return (
     <div>
       <header className="">
         {/* <div className="bg-background hidden md:block">
           <div className="container flex justify-between text-white items-center py-2"> */}
-           <div className="bg-background">
-      <div className="container px-4 py-2 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
+        <div className="bg-background">
+          <div className="container px-4 py-2 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
 
             <div className="flex items-center gap-10">
               <div className="flex items-center gap-2 cursor-pointer">
@@ -49,14 +49,14 @@ return(
                   <FaChevronDown />
                 </div>
 
-               <div>
+                <div>
                   {
                     user.userName ? user.userName : (
-                      <div className="flex gap-2 items-center">
+                      <div className="flex gap-2 items-center" >
                         <p>Login</p>
                         <FaRegUser />
-                         </div>)
-                     
+                      </div>)
+
                   }
                 </div>
                 <div className="flex items-center gap-2">
@@ -77,22 +77,106 @@ return(
           <div className="flex items-center gap-24">
             <h1 className="font-[600] text-[Josefin Sans] text-[34px]  ">Hekto</h1>
             <nav className="flex items-center gap-5 list-none">
-              <li className="flex items-center text-[#FB2E86]">Home <IoIosArrowDown /></li>
+              {/* <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
+                <NavLink to="/">
+                  Home 
+                  </NavLink></li>
              
-             <li>pages</li>
-             <li>Products</li>
-             <li>Blogs</li>
-              {/* <Link>Pages</Link>
-              <Link>Products</Link>
-              <Link>Blogs</Link>
-              <Link>Shop</Link>
-              <Link>Contact</Link> */}
+             <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
+              <NavLink to="pages">pages </NavLink>
+              </li>
+              <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
+              <NavLink to="/#products">Products </NavLink>
+              </li>
+             <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
+              <NavLink to="/#blogs">Blogs </NavLink>
+              </li> */}
+
+              <ul className="flex gap-6">
+                {/* Home */}
+                <li>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600}`
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+
+                {/* Pages */}
+                <li>
+                  <NavLink
+                    to="/pages"
+                    className={({ isActive }) =>
+                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600 `
+                    }
+                  >
+                    Pages
+                  </NavLink>
+                </li>
+
+                {/* Products */}
+                <li>
+                  <NavLink
+                    to="/#products"
+                    onClick={() => {
+                      if (window.location.hash === "#products") {
+                        const element = document.getElementById("products");
+                        if (element) element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className={({ isActive }) =>
+                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600`
+                    }
+                  >
+                    Products
+                  </NavLink>
+                </li>
+
+                {/* Blogs */}
+                <li>
+                  <NavLink
+                    to="/#blogs"
+                    onClick={() => {
+                      if (window.location.hash === "#blogs") {
+                        const element = document.getElementById("blogs");
+                        if (element) element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className={({ isActive }) =>
+                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600`
+                    }
+                  >
+                    Blogs
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    to="/Contact"
+                    onClick={() => {
+                      if (window.location.hash === "#blogs") {
+                        const element = document.getElementById("blogs");
+                        if (element) element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className={({ isActive }) =>
+                      `flex pt-1.5 hover:text-[#FB2E86] ${window.location.hash === "/Contact" ? "font-bold" : "text-gray-600"
+                      }`
+                    }
+                  >
+                    Contact
+                  </NavLink>
+                </li>
+              </ul>
             </nav>
           </div>
 
           <div className="flex items-center ">
-            <input type="text"  className="h-7 border-2-grey border-r-0 bg-[#E7E6EF]" />
-              <CiSearch className="text-white bg-secondary w-5 h-7"/>
+            <input type="text" className="h-7 border-2-grey border-r-0 bg-[#E7E6EF]" />
+            <CiSearch className="text-white bg-secondary w-5 h-7" />
           </div>
         </section>
       </header>

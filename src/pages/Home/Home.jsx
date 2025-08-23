@@ -25,21 +25,21 @@ function Home() {
       </div>
 
 
-      <div className='text-center my-8'>
+      <div id="products" className='text-center my-8'>
         <div>
           <h3 className='text-4xl font-semibold my-8 mt-16 text-primary'>Latest Products</h3>
           <ul className='flex justify-center gap-8 text-primary font-semibold'>
-            <nav className='flex gap-4'>
-              <Link to="">New Arrivals </Link>
-              <Link to="/">Best Seller </Link>
-              <Link to="/">Featured </Link>
-              <Link to="/">Special Offer </Link>
+             <nav className='flex gap-4'>
+             <Link>New Seller</Link>
+              <Link to="/bestSeller">Best Seller </Link>
+              <Link to="#">Featured </Link>
+              <Link to="#">Special Offer </Link>
             </nav>
           </ul>
         </div>
       </div>
 
-
+    
 
       <section className="grid justify-items-center mt-5 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-8 lg:grid-cols-3 lg:gap-10 2xl:grid-cols-4 ">
         {
@@ -234,7 +234,7 @@ function Home() {
 
 
       {/* Latest-Blog */}
-      <section className="py-12">
+      <section id="blogs" className="py-12">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary">Latest Blog</h1>
         </div>

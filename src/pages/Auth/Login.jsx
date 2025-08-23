@@ -73,7 +73,7 @@ function LoginForm() {
         {/* Footer link */}
         <p className="text-center text-sm text-gray-500 mt-6">
           Don’t have an account?
-          <a href="/signup" className="text-primaryrimary hover:underline ml-1">
+          <a href="/signup" className="text-primary hover:underline ml-1">
             Create account
           </a>
         </p>
