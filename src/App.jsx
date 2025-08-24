@@ -9,6 +9,7 @@ import SignupForm from "./pages/Auth/Signup"
 import ScrollToHashElement from "./component/ScrollToHashElement";
 import Contact from "./component/Contact";
 import Blog from "./component/Blog";
+import Shop from "./component/Shop";
 
 
 
@@ -23,9 +24,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="products" element={<ProductCard />} />
           <Route path="products/:id" element={<ProductDetails />} />
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="/blogs" element={<Blog/>}/>
-          <Route path="/pages" element={<div>this a Pages Section</div>}/>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/shops" element={<Shop />} />
+          <Route path="/pages" element={<div>this a Pages Section</div>} />
         </Route>
 
         <Route path="login" element={<LoginForm />} />
@@ -33,7 +35,7 @@ function App() {
       </Routes>
 
       <Routes>
-        <Route path="/admin" element={<div>this is a admin dashboard</div>}/>
+        <Route path="/admin" element={<div>this is a admin dashboard</div>} />
       </Routes>
     </>
   );

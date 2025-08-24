@@ -2,14 +2,11 @@ import React from 'react'
 import Breadcrum from './BreadCrum'
 import contact from "../assets/image/contact.png"
 function Contact() {
-    return (
-          <section className="container">
-      {/* Header */}
-      <div className=" w-full py-12 px-6 md:px-20 bg-[#F6F5FF]">
-        <h2 className="text-2xl font-bold text-gray-900">Contact Us</h2>
-        <p className="text-sm text-gray-600 mt-2">
-         <Breadcrum /> 
-        </p>
+  return (
+    <section className="container">
+      <div className="bg-[#F6F5FF] w-[1235px] h-[280px] ">
+        <h1 className="font-bold text-[24px] p-16 pb-3 sm:text-[28px] lg:text-[35px] text-primary leading-snug">Contact</h1>
+        <Breadcrum />
       </div>
 
       {/* Info Section */}
@@ -117,7 +114,7 @@ function Contact() {
         </div>
       </div>
     </section>
-    )
+  )
 }
 
 export default Contact

@@ -77,30 +77,14 @@ function Header() {
           <div className="flex items-center gap-24">
             <h1 className="font-[600] text-[Josefin Sans] text-[34px]  ">Hekto</h1>
             <nav className="flex items-center gap-5 list-none">
-              {/* <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
-                <NavLink to="/">
-                  Home 
-                  </NavLink></li>
              
-             <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
-              <NavLink to="pages">pages </NavLink>
-              </li>
-              <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
-              <NavLink to="/#products">Products </NavLink>
-              </li>
-             <li className={({ isActive }) => (isActive ? "text-[#FB2E86]" : "")}>
-              <NavLink to="/#blogs">Blogs </NavLink>
-              </li> */}
 
               <ul className="flex gap-6">
                 {/* Home */}
                 <li>
                   <NavLink
                     to="/"
-                    className={({ isActive }) =>
-                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600}`
-                    }
-                  >
+                   className="flex pt-1.5 hover:text-[#FB2E86] text-gray-600">
                     Home
                   </NavLink>
                 </li>
@@ -109,9 +93,7 @@ function Header() {
                 <li>
                   <NavLink
                     to="/pages"
-                    className={({ isActive }) =>
-                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600 `
-                    }
+                    className="flex pt-1.5 hover:text-[#FB2E86] text-gray-600"
                   >
                     Pages
                   </NavLink>
@@ -121,15 +103,7 @@ function Header() {
                 <li>
                   <NavLink
                     to="/#products"
-                    onClick={() => {
-                      if (window.location.hash === "#products") {
-                        const element = document.getElementById("products");
-                        if (element) element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className={({ isActive }) =>
-                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600`
-                    }
+                    className="flex pt-1.5 hover:text-[#FB2E86] text-gray-600"
                   >
                     Products
                   </NavLink>
@@ -138,38 +112,30 @@ function Header() {
                 {/* Blogs */}
                 <li>
                   <NavLink
-                    to="/#blogs"
-                    onClick={() => {
-                      if (window.location.hash === "#blogs") {
-                        const element = document.getElementById("blogs");
-                        if (element) element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className={({ isActive }) =>
-                      `flex pt-1.5 hover:text-[#FB2E86] text-gray-600`
-                    }
-                  >
+                    to="/blogs"
+                    className="flex pt-1.5 hover:text-[#FB2E86] text-gray-600">
                     Blogs
+                  </NavLink>
+                </li>
+
+                {/* Shop */}
+                <li>
+                  <NavLink
+                    to="/shops"
+                    className="flex pt-1.5 hover:text-[#FB2E86] text-gray-600">
+                    Shop
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink
                     to="/Contact"
-                    onClick={() => {
-                      if (window.location.hash === "#blogs") {
-                        const element = document.getElementById("blogs");
-                        if (element) element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className={({ isActive }) =>
-                      `flex pt-1.5 hover:text-[#FB2E86] ${window.location.hash === "/Contact" ? "font-bold" : "text-gray-600"
-                      }`
-                    }
+                   className="flex pt-1.5 hover:text-[#FB2E86]  text-gray-600"
                   >
                     Contact
                   </NavLink>
                 </li>
+                
               </ul>
             </nav>
           </div>
