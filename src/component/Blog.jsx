@@ -6,7 +6,7 @@ function Blog() {
     <section className='container'>
       {/* head part  */}
       <div className="bg-[#F6F5FF] w-[1235px] h-[280px] ">
-        <h1 className="font-bold text-[24px] p-16 pb-3 sm:text-[28px] lg:text-[35px] text-primary leading-snug">Blogs pages</h1>
+        <h1 className="font-bold text-[24px] p-16 pb-3 sm:text-[28px] lg:text-[35px] px-14 text-primary leading-snug">Blogs pages</h1>
         <Breadcrum />
       </div>
 
