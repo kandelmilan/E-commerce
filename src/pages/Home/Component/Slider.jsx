@@ -3,11 +3,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BannerData } from "../../../assets/mockdata";
+import { useNavigate } from "react-router-dom"; 
 
 function SimpleSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
   const totalSlides = BannerData.length;
+
+  const navigate = useNavigate(); 
 
   const settings = {
     dots: true,
@@ -59,7 +62,7 @@ function SimpleSlider() {
           <div key={i}>
             <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-8 md:py-12 md:h-[500px]">
               
-              {/* Left Content */}
+
               <div className="flex-1 max-w-lg text-center md:text-left mb-8 md:mb-0">
                 <p className="text-pink-500 text-xs sm:text-sm font-medium mb-2">
                   {el.subtitle}
@@ -71,12 +74,17 @@ function SimpleSlider() {
                 <p className="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed px-2 md:px-0">
                   {el.description}
                 </p>
-                <button className="bg-pink-500 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-md hover:bg-pink-600 transition-colors font-medium text-sm sm:text-base">
+
+
+                <button
+                  className="bg-pink-500 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-md hover:bg-pink-600 transition-colors font-medium text-sm sm:text-base"
+                  onClick={() => navigate("/prd")}
+                >
                   Shop Now
                 </button>
               </div>
 
-              {/* Right Image */}
+
               <div className="flex-1 flex justify-center items-center relative">
                 <div className="relative">
                   <img
@@ -85,11 +93,11 @@ function SimpleSlider() {
                     className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl"
                   />
                   <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 bg-cyan-400 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center font-bold text-xs sm:text-sm">
-               {el.discount}
+                    {el.discount}
                   </div>
                 </div>
 
-                {/* Decorative elements */}
+
                 <div className="absolute top-6 left-6 sm:top-10 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-purple-200 rounded-full opacity-60"></div>
                 <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 w-10 h-10 sm:w-16 sm:h-16 bg-pink-200 rounded-full opacity-60"></div>
               </div>
