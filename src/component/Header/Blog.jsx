@@ -1,5 +1,5 @@
 import React from 'react'
-import Breadcrum from './BreadCrum'
+import Breadcrum from '../BreadCrum'
 
 function Blog() {
   return (
@@ -13,18 +13,18 @@ function Blog() {
       <div className='mt-12'>
         <div className='flex gap-80'>
 
-            <div className='mx-20'>
-              <h3>Ecommerce Acceories & Fashion item</h3>
-              <p>About 9,620 results (0.62 seconds)</p>
-            </div>
+          <div className='mx-20'>
+            <h3>Ecommerce Acceories & Fashion item</h3>
+            <p>About 9,620 results (0.62 seconds)</p>
+          </div>
 
-            <div>
-              <label htmlFor="PerPage">Per Page:</label>
-              <input type="number" min="1" className='w-10 border-1' />
+          <div>
+            <label htmlFor="PerPage">Per Page:</label>
+            <input type="number" min="1" className='w-10 border-1' />
 
-              <label htmlFor="Sort"> Sort By:</label>
-              <input type="radio" />
-            </div>
+            <label htmlFor="Sort"> Sort By:</label>
+            <input type="radio" />
+          </div>
         </div>
       </div>
 

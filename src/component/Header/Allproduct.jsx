@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { latestProducts } from "../assets/mockdata";
-import Breadcrum from "./BreadCrum"; 
+import { latestProducts } from "../../assets/mockdata";
+import Breadcrum from "../BreadCrum";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { BiMessageAltDetail } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";        // ✅ import dispatch
-import { addtocart } from "../redux/Reducers/cartSlice";   // ✅ import action
+import { addtocart } from "../../redux/Reducers/cartSlice";   // ✅ import action
 
 const Allproduct = () => {
   const [search, setSearch] = useState("");
@@ -51,7 +51,7 @@ const Allproduct = () => {
                 onChange={(e) => setPerPage(Number(e.target.value))}
                 className="border border-gray-300 rounded-md p-1 text-sm"
               >
-                {[2,4,6,8,10,12,14,16,18,20].map(n => (
+                {[2, 4, 6, 8, 10, 12, 14, 16, 18, 20].map(n => (
                   <option key={n} value={n}>{n}</option>
                 ))}
               </select>
@@ -77,7 +77,7 @@ const Allproduct = () => {
             >
               {/* Discount Badge */}
               <div className="absolute top-3 left-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
-                -{Math.round(((item.price - item.discountPrice)/item.price)*100)}%
+                -{Math.round(((item.price - item.discountPrice) / item.price) * 100)}%
               </div>
 
               {/* Image */}

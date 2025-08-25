@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { IoMdRemove, IoMdAdd } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
-import { addtocart, removeFromCart, updateQuantity, clearCart } from "../redux/Reducers/cartSlice";
+import { addtocart, removeFromCart, updateQuantity, clearCart } from "../../redux/Reducers/cartSlice";
 import { AiOutlineShoppingCart } from "react-icons/ai"; // beautiful cart icon
 
 const Cart = () => {

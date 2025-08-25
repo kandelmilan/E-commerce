@@ -1,6 +1,6 @@
 import React from 'react'
-import Breadcrum from './BreadCrum'
-import contact from "../assets/image/contact.png"
+import Breadcrum from '../BreadCrum'
+import contact from "../../assets/image/Contact.png"
 function Contact() {
   return (
     <section className="container">
