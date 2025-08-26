@@ -71,9 +71,11 @@ function Header() {
               </div>
               <div className="flex items-center gap-2">
                 <p>Wishlist</p>
-                <FaRegHeart />
+                <FaRegHeart 
+                onClick={()=>navigate("/")}/>
               </div>
             </div>
+
 
             {/* Cart Icon */}
             <div className="relative cursor-pointer">

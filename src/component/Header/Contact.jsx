@@ -107,7 +107,7 @@ function Contact() {
         {/* Right - Illustration */}
         <div className="flex justify-center">
           <img
-            src={contact} // <-- replace with your illustration path
+            src={contact} 
             alt="Contact Illustration"
             className="max-w-md w-full"
           />

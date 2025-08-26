@@ -8,9 +8,9 @@ import ProductDetails from "./pages/ProductPage/ProductDetails"
 import SignupForm from "./pages/Auth/Signup"
 import Contact from "./component/Header/Contact";
 import Blog from "./component/Header/Blog";
-
 import Allproduct from "./component/Header/Allproduct";
 import Cart from "./component/Header/Cart";
+
 
 
 
@@ -31,6 +31,7 @@ function App() {
           <Route path="/blogs" element={<Blog />} />
           <Route path="prd" element={<Allproduct />} />
           <Route path="cart" element={<Cart />} />
+
           <Route path="/pages" element={<div>this a Pages Section</div>} />
         </Route>
         <Route path="login" element={<LoginForm />} />

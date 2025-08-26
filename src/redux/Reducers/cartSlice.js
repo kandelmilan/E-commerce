@@ -19,10 +19,12 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("cart", JSON.stringify(state.item));
     },
+
     removeFromCart: (state, action) => {
       state.item = state.item.filter((i) => i.id !== action.payload);
       localStorage.setItem("cart", JSON.stringify(state.item));
     },
+
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const existing = state.item.find((i) => i.id === id);
@@ -34,6 +36,7 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("cart", JSON.stringify(state.item));
     },
+    
     clearCart: (state) => {
       state.item = [];
       localStorage.removeItem("cart");
