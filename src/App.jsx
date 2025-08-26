@@ -12,6 +12,8 @@ import Allproduct from "./component/Header/Allproduct";
 import Cart from "./component/Header/Cart";
 import { ToastContainer } from "react-toastify";
 import Wishlist from "./component/Header/WishList";
+import AdminPanel from "./Admin/AdminPanel";
+import Dashboard from "./Admin/Dashboard";
 
 
 function App() {
@@ -33,8 +35,15 @@ function App() {
         </Route>
         <Route path="login" element={<LoginForm />} />
         <Route path="signup" element={<SignupForm />} />
-
-         <Route path="/admin" element={<div>this is a admin dashboard</div>} />
+      </Routes>
+      
+      <Routes>
+          <Route path="/admin" element={<AdminPanel />}>
+          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path="products" element={<div>this is products page</div>} />
+          <Route path="users" element={<div>this is users page</div>} />
+          <Route path="settings" element={<div>this is settings page</div>} />
+        </Route>
       </Routes>
 
      
