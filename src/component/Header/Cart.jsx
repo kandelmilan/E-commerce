@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { IoMdRemove, IoMdAdd } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
 import { addtocart, removeFromCart, updateQuantity, clearCart } from "../../redux/Reducers/cartSlice";
-import { AiOutlineShoppingCart } from "react-icons/ai"; 
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.item);
+  const cartItems = useSelector((state) => state.cart.item || []);
+
   const dispatch = useDispatch();
 
   const handleDecrease = (item) => {
@@ -72,7 +73,7 @@ const Cart = () => {
                       <IoMdAdd />
                     </button>
                     <button
-                      onClick={() => handleRemove(item.id) }
+                      onClick={() => handleRemove(item.id)}
                       className="ml-auto text-red-500 hover:text-red-700"
 
                     >

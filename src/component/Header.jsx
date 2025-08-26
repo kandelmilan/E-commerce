@@ -5,28 +5,28 @@ import { BsCart } from "react-icons/bs";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaRegUser, FaRegHeart } from "react-icons/fa";
 import { BiHeartSquare } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { addToWishlist } from "../redux/Reducers/wishListSlice";
+
+
+
+
+
 
 function Header() {
   const user = useSelector((state) => state.user);
   const cartItems = useSelector((state) => state.cart.item);
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
+  // for wishList
+  const dispatch = useDispatch(); 
+  const wishlistItems = useSelector((state) => state.wishlist.items || []);
+  // end of wishlist
+
   const [showCart, setShowCart] = useState(false);
   const cartRef = useRef(null);
   const navigate = useNavigate();
-
-  // Close cart dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (cartRef.current && !cartRef.current.contains(event.target)) {
-        setShowCart(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   return (
     <header>
@@ -69,10 +69,14 @@ function Header() {
                   </div>
                 )}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 cursor-pointer">
                 <p>Wishlist</p>
-                <FaRegHeart 
-                onClick={()=>navigate("/")}/>
+                <FaRegHeart onClick={() => navigate("/wishlist")} />
+                {wishlistItems.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    {wishlistItems.length}
+                  </span>
+                )}
               </div>
             </div>
 
