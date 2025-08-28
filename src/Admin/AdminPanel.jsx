@@ -10,7 +10,7 @@ const AdminPanel = () => {
     <div className="flex h-screen">
       {/* Sidebar */}
       <aside
-        className={`bg-gray-900 text-white w-64 flex-shrink-0 transition-all duration-300 ${
+       className={`bg-gray-900 text-white w-64 flex-shrink-0 transition-all duration-300 ${
           sidebarOpen ? "block" : "hidden md:block"
         }`}
       >

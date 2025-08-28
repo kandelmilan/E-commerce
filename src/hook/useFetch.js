@@ -10,12 +10,12 @@ function useFetch(endpoint,options={}){
 
     useEffect(()=>{
         if(!endpoint) return;
-
         setLoading(true)
         setError(null)
 
-        axios(`${Baseurl}/${endpoint}`).then((res)=>{
+         axios(`${Baseurl}/${endpoint}`).then((res)=>{
             setData(res.data);
+            console.log(res.data);
             setLoading(false);
         })
         .catch((err)=>{

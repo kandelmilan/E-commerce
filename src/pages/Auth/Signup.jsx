@@ -13,7 +13,7 @@ function SignupForm(){
     const navigate=useNavigate()
     const [formData,setFormData]=useState({
         username:'',
-        email:"",
+        email:'',
         password:'',
         role:'',
 
