@@ -22,11 +22,11 @@ function SignupForm(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`${Baseurl}/api/v1/user/signup`, formData)
+            const res = await axios.post(`${Baseurl}/user/signup`, formData)
             console.log(res)
             if (res.data) {
                 toast("Signed up sucessfully")
-                navigate("/login")
+                navigate("/Login")
 
             }
 
