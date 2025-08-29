@@ -13,7 +13,9 @@ import Cart from "./component/Header/Cart";
 import { ToastContainer } from "react-toastify";
 import Wishlist from "./component/Header/WishList";
 import AdminPanel from "./Admin/AdminPanel";
-import Dashboard from "./Admin/Dashboard";
+import Dashboard from "./Admin/component/Dashboard";
+import Product from "./Admin/component/Product";
+import Error from "./Admin/component/Error";
 
 
 function App() {
@@ -40,8 +42,8 @@ function App() {
       <Routes>
           <Route path="/admin" element={<AdminPanel />}>
           <Route path="dashboard" element={<Dashboard/>} />
-          <Route path="products" element={<div>this is products page</div>} />
-          <Route path="users" element={<div>this is users page</div>} />
+          <Route path="products" element={<Product/>} />
+          <Route path="users" element={<Error/>} />
           <Route path="settings" element={<div>this is settings page</div>} />
         </Route>
       </Routes>

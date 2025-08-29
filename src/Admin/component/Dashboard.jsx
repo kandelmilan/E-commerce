@@ -12,11 +12,11 @@ function Dashboard() {
           <p className="text-2xl mt-2">1,234</p>
         </div>
         <div className="p-6 bg-white rounded shadow hover:shadow-lg transition">
-          <h2 className="text-lg font-semibold">Pending Verification</h2>
+          <h2 className="text-lg font-semibold">Total Income</h2>
           <p className="text-2xl mt-2">56</p>
         </div>
         <div className="p-6 bg-white rounded shadow hover:shadow-lg transition">
-          <h2 className="text-lg font-semibold">Resolved Verification</h2>
+          <h2 className="text-lg font-semibold">Pending Item</h2>
           <p className="text-2xl mt-2">1,120</p>
         </div>
         <div className="p-6 bg-white rounded shadow hover:shadow-lg transition">

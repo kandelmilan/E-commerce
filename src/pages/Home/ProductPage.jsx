@@ -24,7 +24,7 @@ const ProductPage = () => {
               <h3 className="text-[16px] font-medium text-indigo-900">{el.name}</h3>
               <div className="flex justify-center items-center gap-3 mt-2">
                 <span className="text-gray-400 line-through text-sm">${el.actualPrice}</span>
-                <span className="text-[#03045E] font-bold text-lg">${el.discountPrice}</span>
+                <span className="text-[#03045E] font-bold text-lg">${el.discountPrice}  </span>
               </div>
             </div>
           </div>
