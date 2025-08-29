@@ -1,14 +1,16 @@
-// import { Navigate } from "react-router";
+import { Navigate } from "react-router";
+import { toast } from "react-toastify";
 
 
-// function ProtectedRoute({ children }) {
-//   const token = localStorage.getItem("token");
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem("token");
 
-//   if (!token) {
-//     return <Navigate to="/login" replace />;
-//   }
+  if (!token) {
+    toast.error("Login Needed");
+    return <Navigate to="/login" replace />;
+  }
 
-//   return <>{children}</>;
-// }
+  return <>{children}</>;
+}
 
-// export default ProtectedRoute;
+export default ProtectedRoute;

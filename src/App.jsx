@@ -16,12 +16,14 @@ import AdminPanel from "./Admin/AdminPanel";
 import Dashboard from "./Admin/component/Dashboard";
 import Product from "./Admin/component/Product";
 import Error from "./Admin/component/Error";
+import User from "./Admin/component/User";
+import ProtectedRoute from "./hoc/ProtectedRoute";
 
 
 function App() {
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -30,25 +32,35 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="prd" element={<Allproduct />} />
-          <Route path="/wishList" element={<Wishlist/>}/>
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishList" element={<Wishlist />} />
+          <Route path="/cart" element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          } />
 
           <Route path="/pages" element={<div>this a Pages Section</div>} />
         </Route>
         <Route path="login" element={<LoginForm />} />
         <Route path="signup" element={<SignupForm />} />
       </Routes>
-      
+
       <Routes>
-          <Route path="/admin" element={<AdminPanel />}>
-          <Route path="dashboard" element={<Dashboard/>} />
-          <Route path="products" element={<Product/>} />
-          <Route path="users" element={<Error/>} />
-          <Route path="settings" element={<div>this is settings page</div>} />
+
+        <Route path="/admin" element=
+          {
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="products" element={<Product />} />
+          <Route path="users" element={<User />} />
+          <Route path="settings" element={<Error />} />
         </Route>
       </Routes>
 
-     
+
     </>
   );
 }

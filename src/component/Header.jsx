@@ -63,7 +63,8 @@ function Header() {
                 {user.userName ? (
                   user.userName
                 ) : (
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center cursor-pointer"
+                    onClick={()=>{navigate("/login")}}>
                     <p>Login</p>
                     <FaRegUser />
                   </div>
