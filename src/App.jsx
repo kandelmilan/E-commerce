@@ -19,6 +19,7 @@ import Error from "./Admin/component/Error";
 import User from "./Admin/component/User";
 import ProtectedRoute from "./hoc/ProtectedRoute";
 import Checkout from "./component/Header/Checkout";
+import OrderConfirm from "./component/Header/OrderComform";
 
 
 function App() {
@@ -32,9 +33,10 @@ function App() {
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blogs" element={<Blog />} />
-          <Route path="prd" element={<Allproduct />} />
+          <Route path="/prd" element={<Allproduct />} />
           <Route path="/wishList" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orderconform" element={<OrderConfirm />} />
           <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />
@@ -43,6 +45,7 @@ function App() {
 
           <Route path="/pages" element={<div>this a Pages Section</div>} />
         </Route>
+
         <Route path="login" element={<LoginForm />} />
         <Route path="signup" element={<SignupForm />} />
       </Routes>
