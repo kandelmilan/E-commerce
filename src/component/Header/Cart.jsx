@@ -4,10 +4,11 @@ import { IoMdRemove, IoMdAdd } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
 import { addtocart, removeFromCart, updateQuantity, clearCart } from "../../redux/Reducers/cartSlice";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.item || []);
-
+  const navigate=useNavigate();
   const dispatch = useDispatch();
 
   const handleDecrease = (item) => {
@@ -95,7 +96,8 @@ const Cart = () => {
               >
                 Clear Cart
               </button>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
+              onClick={()=>{navigate("/checkout")}}>
                 Checkout
               </button>
             </div>

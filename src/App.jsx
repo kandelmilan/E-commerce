@@ -18,6 +18,7 @@ import Product from "./Admin/component/Product";
 import Error from "./Admin/component/Error";
 import User from "./Admin/component/User";
 import ProtectedRoute from "./hoc/ProtectedRoute";
+import Checkout from "./component/Header/Checkout";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/blogs" element={<Blog />} />
           <Route path="prd" element={<Allproduct />} />
           <Route path="/wishList" element={<Wishlist />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />
