@@ -1,9 +1,9 @@
 // src/pages/admin/Users.jsx
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const initialUsers = [
-  { id: 1, name: "John Doe", email: "john@example.com", role: "Admin", active: true },
-  { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User", active: true },
+  
 ];
 
 const Users = () => {
@@ -33,15 +33,20 @@ const Users = () => {
 
   const handleDelete = (id) => {
     setUsers(users.filter((u) => u.id !== id));
+    toast.success("The user has been deleted")
   };
 
-  const handleView = (user) => {
-    alert(
-      `Name: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${
-        user.active ? "Active" : "Inactive"
-      }`
-    );
-  };
+  // const handleView = (user) => {
+  //   alert(
+  //     `Name: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${
+  //       user.active ? "Active" : "Inactive"
+  //     }`
+  //   );
+  // };
+
+const handleView = (user) => {
+  toast.info(`Name: ${user.name}, Email: ${user.email}`);
+};
 
   return (
     <div>
@@ -125,7 +130,7 @@ const Users = () => {
                     View
                   </button>
                   <button
-                    onClick={() => alert("Edit feature coming soon!")}
+                    onClick={() => toast.info("Edit feature coming soon!")}
                     className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                   >
                     Edit

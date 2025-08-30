@@ -73,11 +73,11 @@ function Header() {
               <div className="flex items-center gap-2 cursor-pointer">
                 <p>Wishlist</p>
                 <FaRegHeart onClick={() => navigate("/wishlist")} />
-                {wishlistItems.length > 0 && (
+                {/* {wishlistItems.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                     {wishlistItems.length}
                   </span>
-                )}
+                )} */}
               </div>
             </div>
 
