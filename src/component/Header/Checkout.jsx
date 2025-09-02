@@ -37,9 +37,9 @@ const Checkout = () => {
       return;
     }
 
-    // Here you could send order info to backend
 
-    // Show success toast
+
+
     toast.success(
       <div className="flex items-center gap-2">
         <FaCheckCircle /> Order placed successfully!
@@ -47,10 +47,10 @@ const Checkout = () => {
       { autoClose: 3000 }
     );
 
-    // Clear cart
+
     dispatch(clearCart());
 
-    // Navigate to OrderConfirm page after a delay
+
     setTimeout(() => navigate("/orderConform"), 1500);
   };
 
@@ -58,7 +58,7 @@ const Checkout = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <ToastContainer />
       <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl grid md:grid-cols-2 gap-6 p-6">
-        
+
         {/* Billing & Payment Form */}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <h2 className="text-2xl font-bold mb-4">Billing & Payment</h2>

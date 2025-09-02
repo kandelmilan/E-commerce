@@ -20,6 +20,7 @@ import User from "./Admin/component/User";
 import ProtectedRoute from "./hoc/ProtectedRoute";
 import Checkout from "./component/Header/Checkout";
 import OrderConfirm from "./component/Header/OrderComform";
+import Setting from "./Admin/component/Setting";
 
 
 function App() {
@@ -61,7 +62,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="products" element={<Product />} />
           <Route path="users" element={<User />} />
-          <Route path="settings" element={<Error />} />
+          <Route path="settings" element={<Setting />} />
         </Route>
       </Routes>
 
