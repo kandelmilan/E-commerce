@@ -1,6 +1,7 @@
 import React from "react";
 import Breadcrum from "../BreadCrum";
 import Blog22 from "../../assets/image/Blog22.png";
+import Blog11 from "../../assets/image/Blog11.png";
 
 function Blog() {
   return (
@@ -39,7 +40,7 @@ function Blog() {
 
           {/* Duplicate cards for more posts */}
           <div className="space-y-4">
-            <img src={Blog22} alt="Blog" className="rounded-lg shadow" />
+            <img src={Blog11} alt="Blog" className="rounded-lg shadow" />
             <div className="flex gap-4 text-sm text-gray-500">
               <span className="text-pink-500">Surf Axion</span>
               <span className="text-orange-400">Aug 09 2020</span>
