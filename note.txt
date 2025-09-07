@@ -57,3 +57,89 @@ cloudfare tunnel
 //     },
 //   },
 // });
+
+password js package
+
+sigup ko lagi 
+
+/signup:-
+
+full name
+phone number
+address
+age
+email
+password
+
+login ko lagi 
+/login:-
+email 
+password
+oauth
+
+
+/me :-
+req ma token aauna paryo ani
+res ma data
+
+/banner:-
+image
+title
+description
+link of product id - shop now 
+discount percentage 
+
+
+/mostSelling
+
+product details(array of prduct)
+
+/latestProduct
+
+product details(array of prduct)
+
+/discountitem
+list of categories
+
+
+/categories
+image
+title
+
+products
+categories id
+title
+image
+price
+discounted price
+product of (user id)
+
+short dis
+disrew id
+video id
+
+rating  in such a way avg of all 
+
+
+
+reviews 
+product id
+user id 
+comment 
+rating amount out of 5
+
+/wishlist
+product id 
+user id 
+
+cart 
+
+model 
+user 
+banner 
+categories
+reiew
+product 
+wishlist
+cart
+

@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const Baseurl="https://chaitra-ecommerce-backend.onrender.com/api/v1";
+export const Baseurl = "https://chaitra-ecommerce-backend.onrender.com/api/v1";
 
-function useFetch(endpoint,options={}){
-    const [data,setData]=useState(null);
-    const [loading,setLoading]=useState(null);
-    const [error,setError]=useState(null);
+function useFetch(endpoint, options = {}) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(null);
+    const [error, setError] = useState(null);
 
-    useEffect(()=>{
-        if(!endpoint) return;
+    useEffect(() => {
+        if (!endpoint) return;
         setLoading(true)
         setError(null)
 
-         axios(`${Baseurl}/${endpoint}`).then((res)=>{
+        axios(`${Baseurl}/${endpoint}`).then((res) => {
             setData(res.data);
             console.log(res.data);
             setLoading(false);
         })
-        .catch((err)=>{
-            setError(err.message || "Something went wrong");
-          setLoading(false);
-        })
-    },[endpoint]);
-    return {data,loading,error};
+            .catch((err) => {
+                setError(err.message || "Something went wrong");
+                setLoading(false);
+            })
+    }, [endpoint]);
+    return { data, loading, error };
 
 }
 export default useFetch
