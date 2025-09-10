@@ -4,7 +4,8 @@ import { Baseurl } from '../../hook/useFetch';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import Logo from "../../assets/image/Logo.png"
+import Logo from "../../assets/image/Logo.png";
+import { FcGoogle } from 'react-icons/fc';
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,20 +13,25 @@ function LoginForm() {
     email: '',
     password: ''
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const res = await axios.post(`${Baseurl}/user/login`, formData)
-      localStorage.setItem("token", res?.data?.token)
-      navigate("/")
-      toast.success("Login Successfull")
+      const res = await axios.post(`${Baseurl}/user/login`, formData);
+      localStorage.setItem("token", res?.data?.token);
+      navigate("/");
+      toast.success("Login Successfull");
     } catch (err) {
-      console.log(err)
-      toast.error(err?.response?.data?.message)
+      console.log(err);
+      toast.error(err?.response?.data?.message);
     }
-  }
+  };
+
+
+  const handleGoogleLogin = () => {
+    toast.info("Google login clicked (integrate here)");
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
@@ -91,11 +97,28 @@ function LoginForm() {
 
         {/* Sign In Button */}
         <button
-          className="w-full primary-btn py-3 rounded-md"
+          className="w-full bg-[#0A174E] text-white py-3 rounded-md hover:bg-blue-900 transition"
           onClick={(e) => handleSubmmit(e)}
         >
           Sign In
         </button>
+
+        {/* Divider */}
+        <div className="flex items-center my-4">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="px-2 text-sm text-gray-500">or</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        {/* Google Login Button */}
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50 transition"
+        >
+          <FcGoogle className="h-5 w-5" />
+          <span className="text-sm font-medium text-gray-700">Login with Google</span>
+        </button>
+
 
         {/* Footer link */}
         <p className="text-center text-sm text-gray-500 mt-6">
