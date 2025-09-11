@@ -1,5 +1,6 @@
 // src/pages/admin/FurnitureProducts.jsx
 import React, { useState } from "react";
+import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
 
 const FurnitureProducts = () => {
   const [products, setProducts] = useState([]);
@@ -71,13 +72,13 @@ const FurnitureProducts = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Furniture Products</h2>
+    <div className="p-6">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">🛋️ Furniture Products</h2>
 
       {/* Form to add furniture */}
       <form
         onSubmit={handleAdd}
-        className="bg-white p-6 rounded-lg shadow mb-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="bg-white p-6 rounded-2xl shadow-lg mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200"
       >
         <input
           type="text"
@@ -85,7 +86,7 @@ const FurnitureProducts = () => {
           placeholder="Product Name"
           value={form.name}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
         <input
@@ -94,7 +95,7 @@ const FurnitureProducts = () => {
           placeholder="Price"
           value={form.price}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
 
@@ -105,7 +106,7 @@ const FurnitureProducts = () => {
             checked={form.discountEnabled}
             onChange={handleChange}
           />
-          <label>Enable Discount</label>
+          <label className="text-sm font-medium">Enable Discount</label>
         </div>
 
         {form.discountEnabled && (
@@ -115,7 +116,7 @@ const FurnitureProducts = () => {
             placeholder="Discount Price"
             value={form.discountPrice}
             onChange={handleChange}
-            className="border p-2 rounded"
+            className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         )}
 
@@ -125,7 +126,7 @@ const FurnitureProducts = () => {
           placeholder="Stock"
           value={form.stock}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
 
@@ -134,80 +135,99 @@ const FurnitureProducts = () => {
           placeholder="Description"
           value={form.description}
           onChange={handleChange}
-          className="border p-2 rounded md:col-span-2"
+          className="border p-3 rounded-lg md:col-span-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           rows={3}
         />
 
         {/* Image Upload */}
         <div className="flex flex-col gap-2 md:col-span-2">
-          <label className="font-medium">Select Image:</label>
-          <input type="file" name="imageFile" accept="image/*" onChange={handleChange} />
+          <label className="font-medium text-gray-700">Select Image:</label>
+          <input
+            type="file"
+            name="imageFile"
+            accept="image/*"
+            onChange={handleChange}
+            className="cursor-pointer"
+          />
           {form.imagePreview && (
             <img
               src={form.imagePreview}
               alt="Preview"
-              className="w-32 h-32 object-cover mt-2 rounded border"
+              className="w-32 h-32 object-cover mt-2 rounded-lg border shadow-sm"
             />
           )}
         </div>
 
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 md:col-span-2"
+          className="flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition-all md:col-span-2"
         >
-          Add Product
+          <Plus size={18} /> Add Product
         </button>
       </form>
 
       {/* Products Table */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
+      <div className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200">
         <table className="w-full border-collapse">
-          <thead className="bg-gray-100">
+          <thead className="bg-indigo-50">
             <tr>
-              <th className="p-3 text-left">Image</th>
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Price</th>
-              <th className="p-3 text-left">Discount</th>
-              <th className="p-3 text-left">Stock</th>
-              <th className="p-3 text-left">Actions</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Image</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Name</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Price</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Discount</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Stock</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700">Actions</th>
             </tr>
           </thead>
           <tbody>
             {products.map((p) => (
-              <tr key={p.id} className="border-t hover:bg-gray-50">
-                <td className="p-3">
+              <tr key={p.id} className="border-t hover:bg-gray-50 transition">
+                <td className="p-4">
                   {p.image ? (
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-16 h-16 object-cover rounded"
+                      className="w-16 h-16 object-cover rounded-lg border"
                     />
                   ) : (
                     "No image"
                   )}
                 </td>
-                <td className="p-3">{p.name}</td>
-                <td className="p-3">${p.price}</td>
-                <td className="p-3">
-                  {p.discountEnabled && p.discountPrice ? `$${p.discountPrice}` : "—"}
+                <td className="p-4 font-medium">{p.name}</td>
+                <td className="p-4 text-indigo-600 font-semibold">${p.price}</td>
+                <td className="p-4">
+                  {p.discountEnabled && p.discountPrice ? (
+                    <span className="text-green-600 font-semibold">
+                      ${p.discountPrice}
+                    </span>
+                  ) : (
+                    "—"
+                  )}
                 </td>
-                <td className="p-3">{p.stock}</td>
-                <td className="p-3 flex gap-2">
-                  <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-                    View
+                <td className="p-4">{p.stock}</td>
+                <td className="p-4 flex gap-2">
+                  <button className="flex items-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                    <Eye size={16} /> View
                   </button>
-                  <button className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
-                    Edit
+                  <button className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
+                    <Pencil size={16} /> Edit
                   </button>
                   <button
                     onClick={() => handleDelete(p.id)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
                   >
-                    Delete
+                    <Trash2 size={16} /> Delete
                   </button>
                 </td>
               </tr>
             ))}
+            {products.length === 0 && (
+              <tr>
+                <td colSpan="6" className="text-center py-6 text-gray-500">
+                  No products added yet.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
