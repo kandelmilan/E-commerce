@@ -38,7 +38,6 @@ const FurnitureProducts = () => {
   // Add product
   const handleAdd = (e) => {
     e.preventDefault();
-
     if (!form.name || !form.price || !form.stock) return;
 
     const newProduct = {
@@ -73,12 +72,14 @@ const FurnitureProducts = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">🛋️ Furniture Products</h2>
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+        🛋️ Furniture Products
+      </h2>
 
       {/* Form to add furniture */}
       <form
         onSubmit={handleAdd}
-        className="bg-white p-6 rounded-2xl shadow-lg mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200"
+        className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200 dark:border-gray-700"
       >
         <input
           type="text"
@@ -86,7 +87,7 @@ const FurnitureProducts = () => {
           placeholder="Product Name"
           value={form.name}
           onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           required
         />
         <input
@@ -95,7 +96,7 @@ const FurnitureProducts = () => {
           placeholder="Price"
           value={form.price}
           onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           required
         />
 
@@ -106,7 +107,9 @@ const FurnitureProducts = () => {
             checked={form.discountEnabled}
             onChange={handleChange}
           />
-          <label className="text-sm font-medium">Enable Discount</label>
+          <label className="text-sm font-medium dark:text-gray-300">
+            Enable Discount
+          </label>
         </div>
 
         {form.discountEnabled && (
@@ -116,7 +119,7 @@ const FurnitureProducts = () => {
             placeholder="Discount Price"
             value={form.discountPrice}
             onChange={handleChange}
-            className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         )}
 
@@ -126,7 +129,7 @@ const FurnitureProducts = () => {
           placeholder="Stock"
           value={form.stock}
           onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           required
         />
 
@@ -135,13 +138,15 @@ const FurnitureProducts = () => {
           placeholder="Description"
           value={form.description}
           onChange={handleChange}
-          className="border p-3 rounded-lg md:col-span-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg md:col-span-2 focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           rows={3}
         />
 
         {/* Image Upload */}
         <div className="flex flex-col gap-2 md:col-span-2">
-          <label className="font-medium text-gray-700">Select Image:</label>
+          <label className="font-medium text-gray-700 dark:text-gray-300">
+            Select Image:
+          </label>
           <input
             type="file"
             name="imageFile"
@@ -167,21 +172,36 @@ const FurnitureProducts = () => {
       </form>
 
       {/* Products Table */}
-      <div className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200">
+      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
         <table className="w-full border-collapse">
-          <thead className="bg-indigo-50">
+          <thead className="bg-indigo-50 dark:bg-gray-700">
             <tr>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Image</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Name</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Price</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Discount</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Stock</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Actions</th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Image
+              </th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Name
+              </th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Price
+              </th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Discount
+              </th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Stock
+              </th>
+              <th className="p-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
             {products.map((p) => (
-              <tr key={p.id} className="border-t hover:bg-gray-50 transition">
+              <tr
+                key={p.id}
+                className="border-t dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
                 <td className="p-4">
                   {p.image ? (
                     <img
@@ -193,8 +213,10 @@ const FurnitureProducts = () => {
                     "No image"
                   )}
                 </td>
-                <td className="p-4 font-medium">{p.name}</td>
-                <td className="p-4 text-indigo-600 font-semibold">${p.price}</td>
+                <td className="p-4 font-medium dark:text-white">{p.name}</td>
+                <td className="p-4 text-indigo-600 font-semibold">
+                  ${p.price}
+                </td>
                 <td className="p-4">
                   {p.discountEnabled && p.discountPrice ? (
                     <span className="text-green-600 font-semibold">
@@ -204,7 +226,7 @@ const FurnitureProducts = () => {
                     "—"
                   )}
                 </td>
-                <td className="p-4">{p.stock}</td>
+                <td className="p-4 dark:text-gray-200">{p.stock}</td>
                 <td className="p-4 flex gap-2">
                   <button className="flex items-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                     <Eye size={16} /> View
@@ -223,7 +245,10 @@ const FurnitureProducts = () => {
             ))}
             {products.length === 0 && (
               <tr>
-                <td colSpan="6" className="text-center py-6 text-gray-500">
+                <td
+                  colSpan="6"
+                  className="text-center py-6 text-gray-500 dark:text-gray-400"
+                >
                   No products added yet.
                 </td>
               </tr>
