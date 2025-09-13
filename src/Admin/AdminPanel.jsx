@@ -7,10 +7,15 @@ import {
   FaCog,
   FaSignOutAlt,
   FaBars,
+  FaBell,
+  FaMoon,
+  FaSun,
 } from "react-icons/fa";
 
 const AdminPanel = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const menuItems = [
@@ -26,12 +31,16 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div
+      className={`flex h-screen ${
+        darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+      }`}
+    >
       {/* Sidebar */}
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-gradient-to-b from-gray-900 to-gray-800 text-white transition-all duration-300 flex flex-col`}
+        } ${darkMode ? "bg-gray-800" : "bg-gradient-to-b from-gray-900 to-gray-800 text-white"} transition-all duration-300 flex flex-col`}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -97,14 +106,73 @@ const AdminPanel = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col">
         {/* Topbar */}
-        <header className="flex items-center justify-between p-4 bg-white shadow-md">
+        <header
+          className={`flex items-center justify-between p-4 shadow-md ${
+            darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+          }`}
+        >
+          {/* Sidebar Toggle */}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="text-gray-600 hover:text-gray-900 transition"
           >
             <FaBars size={20} />
           </button>
-          <h2 className="text-lg font-semibold text-gray-800">Welcome Admin</h2>
+
+          {/* Page Title / Breadcrumb */}
+          <h2 className="text-lg font-semibold">Welcome Admin</h2>
+
+          {/* Right side: actions */}
+          <div className="flex items-center gap-4">
+            {/* Notifications */}
+            <button className="relative hover:text-blue-500">
+              <FaBell size={18} />
+              <span className="absolute top-0 right-0 bg-red-600 text-white text-xs px-1 rounded-full">
+                3
+              </span>
+            </button>
+
+            {/* Dark Mode Toggle */}
+            <button onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+            </button>
+
+            {/* User Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2"
+              >
+                <img
+                  src="https://i.pravatar.cc/40"
+                  alt="avatar"
+                  className="w-8 h-8 rounded-full border"
+                />
+                <span className="hidden md:block font-medium">Admin</span>
+              </button>
+
+              {dropdownOpen && (
+                <div
+                  className={`absolute right-0 mt-2 w-40 rounded-lg shadow-lg ${
+                    darkMode ? "bg-gray-700 text-white" : "bg-white text-gray-800"
+                  }`}
+                >
+                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                    Profile
+                  </button>
+                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                    Settings
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 hover:bg-red-500 hover:text-white"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </header>
 
         {/* Page content */}
