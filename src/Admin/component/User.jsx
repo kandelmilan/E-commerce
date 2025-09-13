@@ -39,13 +39,13 @@ const Users = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen text-gray-100">
-      <h2 className="text-3xl font-bold mb-6">👤 User Management</h2>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">👤 User Management</h2>
 
       {/* Add User Form */}
       <form
         onSubmit={handleAddUser}
-        className="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-700"
+        className="bg-white p-6 rounded-xl shadow-md mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200"
       >
         <input
           type="text"
@@ -53,7 +53,7 @@ const Users = () => {
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
-          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
         <input
@@ -62,14 +62,14 @@ const Users = () => {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
         <select
           name="role"
           value={form.role}
           onChange={handleChange}
-          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
         >
           <option value="User">User</option>
           <option value="Admin">Admin</option>
@@ -86,30 +86,30 @@ const Users = () => {
         </div>
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition md:col-span-2"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition md:col-span-2 flex items-center justify-center gap-2"
         >
           ➕ Add User
         </button>
       </form>
 
       {/* Users Table */}
-      <div className="bg-gray-800 shadow-lg rounded-xl overflow-hidden border border-gray-700">
+      <div className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
         <table className="w-full border-collapse">
-          <thead className="bg-gray-700 text-gray-200">
+          <thead className="bg-indigo-50">
             <tr>
-              <th className="p-3 text-left">ID</th>
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Role</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Actions</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">ID</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">Name</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">Email</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">Role</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">Status</th>
+              <th className="p-3 text-left text-gray-700 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr
                 key={user.id}
-                className="border-t border-gray-700 hover:bg-gray-700/50 transition"
+                className="border-t hover:bg-gray-50 transition"
               >
                 <td className="p-3">{user.id}</td>
                 <td className="p-3">{user.name}</td>
@@ -117,9 +117,9 @@ const Users = () => {
                 <td className="p-3">{user.role}</td>
                 <td className="p-3">
                   {user.active ? (
-                    <span className="text-green-400 font-medium">Active</span>
+                    <span className="text-green-600 font-medium">Active</span>
                   ) : (
-                    <span className="text-red-400 font-medium">Inactive</span>
+                    <span className="text-red-600 font-medium">Inactive</span>
                   )}
                 </td>
                 <td className="p-3 flex gap-2">
