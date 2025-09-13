@@ -22,7 +22,7 @@ import Checkout from "./component/Header/Checkout";
 import OrderConfirm from "./component/Header/OrderComform";
 import Setting from "./Admin/component/Setting";
 import Profile from "./Admin/component/Profile";
-import ProfilePage from "./Admin/component/Profile";
+
 
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
           <Route path="products" element={<Product />} />
           <Route path="users" element={<User />} />
           <Route path="settings" element={<Setting />} />
-           <Route path="profile" element={<ProfilePage />} />
+           <Route path="Profile" element={<Profile />} />
         </Route>
       </Routes>
 

@@ -1,10 +1,7 @@
-// src/pages/admin/Users.jsx
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const initialUsers = [
-  
-];
+const initialUsers = [];
 
 const Users = () => {
   const [users, setUsers] = useState(initialUsers);
@@ -29,33 +26,26 @@ const Users = () => {
 
     setUsers([...users, newUser]);
     setForm({ name: "", email: "", role: "User", active: true });
+    toast.success("User added successfully!");
   };
 
   const handleDelete = (id) => {
     setUsers(users.filter((u) => u.id !== id));
-    toast.success("The user has been deleted")
+    toast.success("The user has been deleted");
   };
 
-  // const handleView = (user) => {
-  //   alert(
-  //     `Name: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${
-  //       user.active ? "Active" : "Inactive"
-  //     }`
-  //   );
-  // };
-
-const handleView = (user) => {
-  toast.info(`Name: ${user.name}, Email: ${user.email}`);
-};
+  const handleView = (user) => {
+    toast.info(`Name: ${user.name}, Email: ${user.email}`);
+  };
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">User Management</h2>
+    <div className="p-6 bg-gray-900 min-h-screen text-gray-100">
+      <h2 className="text-3xl font-bold mb-6">👤 User Management</h2>
 
       {/* Add User Form */}
       <form
         onSubmit={handleAddUser}
-        className="bg-white p-6 rounded-lg shadow mb-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-700"
       >
         <input
           type="text"
@@ -63,7 +53,7 @@ const handleView = (user) => {
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
         <input
@@ -72,14 +62,14 @@ const handleView = (user) => {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
         <select
           name="role"
           value={form.role}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="border border-gray-600 bg-gray-900 text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
         >
           <option value="User">User</option>
           <option value="Admin">Admin</option>
@@ -90,21 +80,22 @@ const handleView = (user) => {
             name="active"
             checked={form.active}
             onChange={handleChange}
+            className="w-4 h-4"
           />
-          <label>Active</label>
+          <label className="text-sm">Active</label>
         </div>
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 md:col-span-2"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition md:col-span-2"
         >
-          Add User
+          ➕ Add User
         </button>
       </form>
 
       {/* Users Table */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
+      <div className="bg-gray-800 shadow-lg rounded-xl overflow-hidden border border-gray-700">
         <table className="w-full border-collapse">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-700 text-gray-200">
             <tr>
               <th className="p-3 text-left">ID</th>
               <th className="p-3 text-left">Name</th>
@@ -116,28 +107,37 @@ const handleView = (user) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id} className="border-t hover:bg-gray-50">
+              <tr
+                key={user.id}
+                className="border-t border-gray-700 hover:bg-gray-700/50 transition"
+              >
                 <td className="p-3">{user.id}</td>
                 <td className="p-3">{user.name}</td>
                 <td className="p-3">{user.email}</td>
                 <td className="p-3">{user.role}</td>
-                <td className="p-3">{user.active ? "Active" : "Inactive"}</td>
+                <td className="p-3">
+                  {user.active ? (
+                    <span className="text-green-400 font-medium">Active</span>
+                  ) : (
+                    <span className="text-red-400 font-medium">Inactive</span>
+                  )}
+                </td>
                 <td className="p-3 flex gap-2">
                   <button
                     onClick={() => handleView(user)}
-                    className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    className="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
                   >
                     View
                   </button>
                   <button
                     onClick={() => toast.info("Edit feature coming soon!")}
-                    className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                    className="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(user.id)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
                   >
                     Delete
                   </button>
@@ -146,7 +146,7 @@ const handleView = (user) => {
             ))}
             {users.length === 0 && (
               <tr>
-                <td colSpan="6" className="text-center p-4 text-gray-500">
+                <td colSpan="6" className="text-center p-6 text-gray-400">
                   No users available.
                 </td>
               </tr>

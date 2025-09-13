@@ -8,13 +8,10 @@ import {
   FaSignOutAlt,
   FaBars,
   FaBell,
-  FaMoon,
-  FaSun,
 } from "react-icons/fa";
 
 const AdminPanel = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -31,19 +28,15 @@ const AdminPanel = () => {
   };
 
   return (
-    <div
-      className={`flex h-screen ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
-      }`}
-    >
+    <div className="flex h-screen bg-gray-100 text-black">
       {/* Sidebar */}
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } ${darkMode ? "bg-gray-800" : "bg-gradient-to-b from-gray-900 to-gray-800 text-white"} transition-all duration-300 flex flex-col`}
+        } bg-white shadow-lg transition-all duration-300 flex flex-col`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h1
             className={`text-lg font-bold tracking-wide transition-all duration-300 ${
               sidebarOpen ? "block" : "hidden"
@@ -52,7 +45,7 @@ const AdminPanel = () => {
             Admin Panel
           </h1>
           <button
-            className="text-white md:hidden"
+            className="text-gray-600 md:hidden"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             ✕
@@ -67,9 +60,7 @@ const AdminPanel = () => {
               to={item.to}
               className={({ isActive }) =>
                 `flex items-center gap-3 p-3 mx-2 my-1 rounded-lg transition-all duration-200 ${
-                  isActive
-                    ? "bg-gray-700 shadow-lg"
-                    : "hover:bg-gray-700 hover:shadow"
+                  isActive ? "bg-indigo-50 font-semibold" : "hover:bg-gray-50"
                 }`
               }
             >
@@ -86,10 +77,10 @@ const AdminPanel = () => {
         </nav>
 
         {/* Logout at bottom */}
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-4 border-t border-gray-200">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 p-3 w-full rounded-lg hover:bg-red-600 transition-all duration-200"
+            className="flex items-center gap-3 p-3 w-full rounded-lg hover:bg-red-500 hover:text-white transition-all duration-200"
           >
             <FaSignOutAlt className="text-lg" />
             <span
@@ -106,11 +97,7 @@ const AdminPanel = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col">
         {/* Topbar */}
-        <header
-          className={`flex items-center justify-between p-4 shadow-md ${
-            darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-          }`}
-        >
+        <header className="flex items-center justify-between p-4 shadow-md bg-white text-gray-800">
           {/* Sidebar Toggle */}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -132,11 +119,6 @@ const AdminPanel = () => {
               </span>
             </button>
 
-            {/* Dark Mode Toggle */}
-            <button onClick={() => setDarkMode(!darkMode)}>
-              {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
-            </button>
-
             {/* User Dropdown */}
             <div className="relative">
               <button
@@ -152,15 +134,14 @@ const AdminPanel = () => {
               </button>
 
               {dropdownOpen && (
-                <div
-                  className={`absolute right-0 mt-2 w-40 rounded-lg shadow-lg ${
-                    darkMode ? "bg-gray-700 text-white" : "bg-white text-gray-800"
-                  }`}
-                >
-                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                <div className="absolute right-0 mt-2 w-40 rounded-lg shadow-lg bg-white text-gray-800">
+                  <button
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                    onClick={() => navigate("/admin/profile")}
+                  >
                     Profile
                   </button>
-                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
                     Settings
                   </button>
                   <button
