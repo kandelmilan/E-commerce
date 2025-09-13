@@ -10,6 +10,7 @@ import {
   FaBell,
   FaMoon,
   FaSun,
+  FaUser,
 } from "react-icons/fa";
 
 const AdminPanel = () => {
@@ -23,6 +24,7 @@ const AdminPanel = () => {
     { to: "/admin/products", label: "Products", icon: <FaBoxOpen /> },
     { to: "/admin/users", label: "Users", icon: <FaUsers /> },
     { to: "/admin/settings", label: "Settings", icon: <FaCog /> },
+    { to: "/admin/profile", label: "Profile", icon: <FaUser /> }, // ✅ profile in sidebar
   ];
 
   const handleLogout = () => {
@@ -40,7 +42,11 @@ const AdminPanel = () => {
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } ${darkMode ? "bg-gray-800" : "bg-gradient-to-b from-gray-900 to-gray-800 text-white"} transition-all duration-300 flex flex-col`}
+        } ${
+          darkMode
+            ? "bg-gray-800"
+            : "bg-gradient-to-b from-gray-900 to-gray-800 text-white"
+        } transition-all duration-300 flex flex-col`}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -119,7 +125,7 @@ const AdminPanel = () => {
             <FaBars size={20} />
           </button>
 
-          {/* Page Title / Breadcrumb */}
+          {/* Page Title */}
           <h2 className="text-lg font-semibold">Welcome Admin</h2>
 
           {/* Right side: actions */}
@@ -154,13 +160,25 @@ const AdminPanel = () => {
               {dropdownOpen && (
                 <div
                   className={`absolute right-0 mt-2 w-40 rounded-lg shadow-lg ${
-                    darkMode ? "bg-gray-700 text-white" : "bg-white text-gray-800"
+                    darkMode
+                      ? "bg-gray-700 text-white"
+                      : "bg-white text-gray-800"
                   }`}
                 >
-                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                  {/* ✅ Navigate to profile */}
+                  <button
+                    onClick={() => {
+                      navigate("/admin/profile");
+                      setDropdownOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  >
                     Profile
                   </button>
-                  <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600">
+                  <button
+                    onClick={() => navigate("/admin/settings")}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  >
                     Settings
                   </button>
                   <button
