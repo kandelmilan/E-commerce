@@ -22,6 +22,7 @@ import Checkout from "./component/Header/Checkout";
 import OrderConfirm from "./component/Header/OrderComform";
 import Setting from "./Admin/component/Setting";
 import Profile from "./Admin/component/Profile";
+import CategoriesPage from "./component/Header/Page";
 
 
 
@@ -46,7 +47,7 @@ function App() {
             </ProtectedRoute>
           } />
 
-          <Route path="/pages" element={<div>this a Pages Section</div>} />
+          <Route path="/pages" element={<CategoriesPage/>} />
         </Route>
 
         <Route path="login" element={<LoginForm />} />
