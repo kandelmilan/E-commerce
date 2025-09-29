@@ -41,6 +41,7 @@ function App() {
           <Route path="/wishList" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orderconform" element={<OrderConfirm />} />
+          <Route path="/error" element={<Error />} />
           <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />
