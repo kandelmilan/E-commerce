@@ -27,7 +27,7 @@ const OrderConfirm = () => {
           Order Confirmed!
         </h1>
         <p className="text-gray-600 mt-2 text-lg">
-          🎉 Thank you for your purchase. <br />
+           Thank you for your purchase. <br />
           Your order has been placed successfully.
         </p>
 
