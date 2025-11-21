@@ -17,10 +17,7 @@ function Contact() {
             Information About us
           </h3>
           <p className="text-gray-600 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-            neque ultrices mattis aliquam, malesuada diam est. Malesuada sem
-            tristique amet erat vitae eget dolor lobortis. Accumsan faucibus
-            vitae lobortis quis bibendum quam.
+           this is a contact page any more thing are about to be updated::
           </p>
 
           {/* Social dots */}
