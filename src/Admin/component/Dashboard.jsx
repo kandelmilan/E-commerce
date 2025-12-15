@@ -52,7 +52,7 @@ function Dashboard() {
         <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col items-start">
           <Users className="text-indigo-600 mb-2" size={28} />
           <h2 className="text-sm font-semibold text-gray-600">Total Users</h2>
-          <p className="text-2xl font-bold mt-1">1,234</p>
+          <p className="text-2xl font-bold mt-1">1,235</p>
         </div>
         <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col items-start">
           <DollarSign className="text-green-600 mb-2" size={28} />

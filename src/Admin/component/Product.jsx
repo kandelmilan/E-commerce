@@ -14,218 +14,122 @@ const FurnitureProducts = () => {
     imagePreview: "",
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-
-    if (type === "checkbox") {
-      setForm({ ...form, [name]: checked });
-    } else if (name === "imageFile") {
-      const file = files[0];
-      if (file) {
-        setForm({
-          ...form,
-          imageFile: file,
-          imagePreview: URL.createObjectURL(file),
-        });
-      }
-    } else {
-      setForm({ ...form, [name]: value });
-    }
+    if (type === "checkbox") setForm({ ...form, [name]: checked });
+    else if (name === "imageFile" && files[0])
+      setForm({ ...form, imageFile: files[0], imagePreview: URL.createObjectURL(files[0]) });
+    else setForm({ ...form, [name]: value });
   };
 
-  // Add product
   const handleAdd = (e) => {
     e.preventDefault();
     if (!form.name || !form.price || !form.stock) return;
 
-    const newProduct = {
-      id: products.length + 1,
-      name: form.name,
-      price: Number(form.price),
-      discountEnabled: form.discountEnabled,
-      discountPrice: form.discountEnabled ? Number(form.discountPrice) : null,
-      stock: Number(form.stock),
-      description: form.description,
-      image: form.imagePreview,
-    };
+    setProducts([
+      ...products,
+      {
+        id: Date.now(),
+        name: form.name,
+        price: form.price,
+        discountEnabled: form.discountEnabled,
+        discountPrice: form.discountPrice,
+        stock: form.stock,
+        image: form.imagePreview,
+      },
+    ]);
 
-    setProducts([...products, newProduct]);
-
-    setForm({
-      name: "",
-      price: "",
-      discountEnabled: false,
-      discountPrice: "",
-      stock: "",
-      description: "",
-      imageFile: null,
-      imagePreview: "",
-    });
+    setForm({ name: "", price: "", discountEnabled: false, discountPrice: "", stock: "", description: "", imageFile: null, imagePreview: "" });
   };
 
-  const handleDelete = (id) => {
-    setProducts(products.filter((p) => p.id !== id));
-  };
+  const handleDelete = (id) => setProducts(products.filter((p) => p.id !== id));
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">🛋️ Furniture Products</h2>
+    <div className="p-4 sm:p-8 bg-gray-100 min-h-screen">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-800">Furniture Products</h2>
 
-      {/* Form to add furniture */}
-      <form
-        onSubmit={handleAdd}
-        className="bg-white p-6 rounded-2xl shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Product Name"
-          value={form.name}
-          onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          required
-        />
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          value={form.price}
-          onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          required
-        />
+      {/* FORM */}
+      <form onSubmit={handleAdd} className="bg-white rounded-xl shadow p-4 sm:p-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input className="input" name="name" placeholder="Product Name" value={form.name} onChange={handleChange} required />
+          <input className="input" type="number" name="price" placeholder="Price" value={form.price} onChange={handleChange} required />
 
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="discountEnabled"
-            checked={form.discountEnabled}
-            onChange={handleChange}
-          />
-          <label className="text-sm font-medium">Enable Discount</label>
-        </div>
+          <div className="flex items-center gap-2">
+            <input type="checkbox" name="discountEnabled" checked={form.discountEnabled} onChange={handleChange} />
+            <span className="text-sm">Enable Discount</span>
+          </div>
 
-        {form.discountEnabled && (
-          <input
-            type="number"
-            name="discountPrice"
-            placeholder="Discount Price"
-            value={form.discountPrice}
-            onChange={handleChange}
-            className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          />
-        )}
-
-        <input
-          type="number"
-          name="stock"
-          placeholder="Stock"
-          value={form.stock}
-          onChange={handleChange}
-          className="border p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          required
-        />
-
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={form.description}
-          onChange={handleChange}
-          className="border p-3 rounded-lg md:col-span-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-          rows={3}
-        />
-
-        {/* Image Upload */}
-        <div className="flex flex-col gap-2 md:col-span-2">
-          <label className="font-medium text-gray-700">Select Image:</label>
-          <input
-            type="file"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleChange}
-            className="cursor-pointer"
-          />
-          {form.imagePreview && (
-            <img
-              src={form.imagePreview}
-              alt="Preview"
-              className="w-32 h-32 object-cover mt-2 rounded-lg border shadow-sm"
-            />
+          {form.discountEnabled && (
+            <input className="input" type="number" name="discountPrice" placeholder="Discount Price" value={form.discountPrice} onChange={handleChange} />
           )}
+
+          <input className="input" type="number" name="stock" placeholder="Stock" value={form.stock} onChange={handleChange} required />
         </div>
 
-        <button
-          type="submit"
-          className="flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition-all md:col-span-2"
-        >
-          <Plus size={18} /> Add Product
+        <textarea className="input mt-4" rows={3} name="description" placeholder="Description" value={form.description} onChange={handleChange} />
+
+        <input type="file" name="imageFile" accept="image/*" onChange={handleChange} className="mt-4" />
+        {form.imagePreview && <img src={form.imagePreview} alt="preview" className="w-24 h-24 mt-2 rounded border" />}
+
+        <button className="mt-6 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 flex justify-center gap-2 items-center">
+          <Plus size={16} /> Add Product
         </button>
       </form>
 
-      {/* Products Table */}
-      <div className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200">
-        <table className="w-full border-collapse">
-          <thead className="bg-indigo-50">
+      {/* TABLE (DESKTOP) */}
+      <div className="hidden md:block bg-white rounded-xl shadow overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="bg-gray-50">
             <tr>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Image</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Name</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Price</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Discount</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Stock</th>
-              <th className="p-4 text-left text-sm font-semibold text-gray-700">Actions</th>
+              <th className="p-4">Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Discount</th>
+              <th>Stock</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {products.map((p) => (
-              <tr key={p.id} className="border-t hover:bg-gray-50 transition">
-                <td className="p-4">
-                  {p.image ? (
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      className="w-16 h-16 object-cover rounded-lg border"
-                    />
-                  ) : (
-                    "No image"
-                  )}
-                </td>
-                <td className="p-4 font-medium">{p.name}</td>
-                <td className="p-4 text-indigo-600 font-semibold">${p.price}</td>
-                <td className="p-4">
-                  {p.discountEnabled && p.discountPrice ? (
-                    <span className="text-green-600 font-semibold">${p.discountPrice}</span>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-                <td className="p-4">{p.stock}</td>
-                <td className="p-4 flex gap-2">
-                  <button className="flex items-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    <Eye size={16} /> View
-                  </button>
-                  <button className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
-                    <Pencil size={16} /> Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(p.id)}
-                    className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-                  >
-                    <Trash2 size={16} /> Delete
-                  </button>
+              <tr key={p.id} className="border-t">
+                <td className="p-4">{p.image ? <img src={p.image} className="w-12 h-12 rounded" /> : "—"}</td>
+                <td>{p.name}</td>
+                <td>${p.price}</td>
+                <td>{p.discountEnabled ? `$${p.discountPrice}` : "—"}</td>
+                <td>{p.stock}</td>
+                <td className="flex gap-2 p-4">
+                  <button className="icon-btn bg-blue-500"><Eye size={14} /></button>
+                  <button className="icon-btn bg-yellow-500"><Pencil size={14} /></button>
+                  <button onClick={() => handleDelete(p.id)} className="icon-btn bg-red-500"><Trash2 size={14} /></button>
                 </td>
               </tr>
             ))}
-            {products.length === 0 && (
-              <tr>
-                <td colSpan="6" className="text-center py-6 text-gray-500">
-                  No products added yet.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>
+
+      {/* MOBILE CARDS */}
+      <div className="grid grid-cols-1 gap-4 md:hidden">
+        {products.map((p) => (
+          <div key={p.id} className="bg-white rounded-xl shadow p-4">
+            {p.image && <img src={p.image} className="w-full h-40 object-cover rounded mb-3" />}
+            <h3 className="font-semibold">{p.name}</h3>
+            <p className="text-indigo-600">${p.price}</p>
+            {p.discountEnabled && <p className="text-green-600 text-sm">Discount: ${p.discountPrice}</p>}
+            <p className="text-sm">Stock: {p.stock}</p>
+            <div className="flex gap-2 mt-3">
+              <button className="icon-btn bg-blue-500 flex-1"><Eye size={14} /></button>
+              <button className="icon-btn bg-yellow-500 flex-1"><Pencil size={14} /></button>
+              <button onClick={() => handleDelete(p.id)} className="icon-btn bg-red-500 flex-1"><Trash2 size={14} /></button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style>{`
+        .input { @apply border p-2 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 outline-none; }
+        .icon-btn { @apply text-white p-2 rounded hover:opacity-90; }
+      `}</style>
     </div>
   );
 };
