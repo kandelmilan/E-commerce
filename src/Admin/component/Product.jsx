@@ -126,10 +126,6 @@ const FurnitureProducts = () => {
         ))}
       </div>
 
-      <style>{`
-        .input { @apply border p-2 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 outline-none; }
-        .icon-btn { @apply text-white p-2 rounded hover:opacity-90; }
-      `}</style>
     </div>
   );
 };
