@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const Baseurl = "https://chaitra-ecommerce-backend.onrender.com/api/v1";
+export const Baseurl = "http://localhost:5000/api/v1";
 
 function useFetch(endpoint, options = {}) {
     const [data, setData] = useState(null);

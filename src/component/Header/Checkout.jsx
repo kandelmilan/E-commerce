@@ -1,155 +1,225 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { clearCart } from "../../redux/Reducers/cartSlice";
-import { FaCheckCircle } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
+import {
+  FaMoneyBillWave,
+  FaUniversity,
+  FaMobileAlt,
+} from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.item || []);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [selectedPayment, setSelectedPayment] = useState("");
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    address: "",
-    cardNumber: "",
-    expiry: "",
-    cvv: "",
-  });
+  const shippingCharge = 5;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  const totalPrice = cartItems.reduce(
+  const subtotal = cartItems.reduce(
     (acc, item) => acc + item.discountPrice * item.quantity,
     0
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (cartItems.length === 0) {
-      toast.error("Your cart is empty!");
+  const totalPrice = subtotal + shippingCharge;
+
+  const orderId = `ORD-${Date.now()}`;
+  const orderDate = new Date().toLocaleDateString();
+
+  const handleCancel = () => navigate("/cart");
+
+  const handlePayment = () => {
+    if (!selectedPayment) {
+      toast.error("Please select a payment method");
       return;
     }
-
-
-
-
-    toast.success(
-      <div className="flex items-center gap-2">
-        <FaCheckCircle /> Order placed successfully!
-      </div>,
-      { autoClose: 3000 }
-    );
-
-
-    dispatch(clearCart());
-
-
-    setTimeout(() => navigate("/orderConform"), 1500);
+    navigate(`/payment?method=${selectedPayment}`);
   };
 
+  const paymentMethods = [
+    {
+      id: "esewa",
+      name: "eSewa",
+      icon: <FaMobileAlt />,
+      color: "bg-green-600",
+      desc: "Pay using your eSewa wallet",
+    },
+    {
+      id: "khalti",
+      name: "Khalti",
+      icon: <FaMobileAlt />,
+      color: "bg-purple-600",
+      desc: "Fast and secure Khalti payment",
+    },
+    {
+      id: "banking",
+      name: "Net Banking",
+      icon: <FaUniversity />,
+      color: "bg-blue-600",
+      desc: "Pay directly from your bank",
+    },
+    {
+      id: "cod",
+      name: "Cash on Delivery",
+      icon: <FaMoneyBillWave />,
+      color: "bg-gray-800",
+      desc: "Pay when your order arrives",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 px-4 py-6 flex justify-center">
       <ToastContainer />
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl grid md:grid-cols-2 gap-6 p-6">
 
-        {/* Billing & Payment Form */}
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <h2 className="text-2xl font-bold mb-4">Billing & Payment</h2>
+      <div className="bg-white rounded-3xl shadow-xl w-full max-w-6xl p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            className="border p-2 rounded"
-            required
-          />
+        {/* ORDER DETAILS */}
+        <div className="flex flex-col gap-6">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Order Details
+          </h2>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            className="border p-2 rounded"
-            required
-          />
-
-          <textarea
-            name="address"
-            placeholder="Address"
-            value={form.address}
-            onChange={handleChange}
-            className="border p-2 rounded"
-            rows={3}
-            required
-          />
-
-          <input
-            type="text"
-            name="cardNumber"
-            placeholder="Card Number"
-            value={form.cardNumber}
-            onChange={handleChange}
-            className="border p-2 rounded"
-            required
-          />
-
-          <div className="flex gap-2">
-            <input
-              type="text"
-              name="expiry"
-              placeholder="Expiry MM/YY"
-              value={form.expiry}
-              onChange={handleChange}
-              className="border p-2 rounded flex-1"
-              required
-            />
-            <input
-              type="text"
-              name="cvv"
-              placeholder="CVV"
-              value={form.cvv}
-              onChange={handleChange}
-              className="border p-2 rounded w-24"
-              required
-            />
+          {/* Meta Info */}
+          <div className="bg-gray-50 rounded-2xl p-5 space-y-3">
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-500">Order ID</span>
+              <span className="font-medium">{orderId}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-500">Order Date</span>
+              <span>{orderDate}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-500">Payment Status</span>
+              <span className="text-orange-600 font-semibold">Pending</span>
+            </div>
           </div>
 
-          <button
-            type="submit"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded mt-2"
-          >
-            Checkout
-          </button>
-        </form>
-
-        {/* Order Summary */}
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
-          <div className="flex flex-col gap-2 max-h-96 overflow-y-auto">
+          {/* Products */}
+          <div className="bg-white rounded-2xl border p-4 space-y-4 max-h-[420px] overflow-y-auto">
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex justify-between items-center bg-white shadow rounded-lg p-2"
+                className="flex gap-4 items-center p-3 rounded-xl hover:bg-gray-50 transition"
               >
-                <span>{item.title} x {item.quantity}</span>
-                <span>${(item.discountPrice * item.quantity).toFixed(2)}</span>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-20 h-20 object-cover rounded-lg border"
+                />
+
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-800">
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    ${item.discountPrice.toFixed(2)} × {item.quantity}
+                  </p>
+                </div>
+
+                <div className="text-right">
+                  <p className="font-semibold text-gray-800">
+                    ${(item.discountPrice * item.quantity).toFixed(2)}
+                  </p>
+                </div>
               </div>
             ))}
+          </div>
 
-            <div className="flex justify-between font-bold border-t pt-2 mt-2">
+          {/* Price Summary */}
+          <div className="bg-gray-50 rounded-2xl p-5 space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-gray-500">Subtotal</span>
+              <span className="font-medium">${subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">Shipping Charge</span>
+              <span className="font-medium">${shippingCharge.toFixed(2)}</span>
+            </div>
+            <div className="border-t pt-3 flex justify-between text-lg font-bold">
               <span>Total</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
+          </div>
+        </div>
+
+        {/*  RIGHT: SHIPPING & PAYMENT  */}
+        <div className="flex flex-col gap-6">
+
+          {/* Shipping Address */}
+          <div className="bg-gray-50 rounded-2xl p-6 space-y-4">
+            <h3 className="text-xl font-bold text-gray-800">
+              Shipping Address
+            </h3>
+
+            <input
+
+              placeholder="Full Name"
+              className="w-full border p-3 rounded-lg bg-gray-100 text-sm"
+            />
+            <input
+
+              placeholder="Email Address"
+              className="w-full border p-3 rounded-lg bg-gray-100 text-sm"
+            />
+            <input
+
+              placeholder="Phone Number"
+              className="w-full border p-3 rounded-lg bg-gray-100 text-sm"
+            />
+            <textarea
+
+              rows="3"
+              placeholder="Full Address"
+              className="w-full border p-3 rounded-lg bg-gray-100 text-sm"
+            />
+          </div>
+
+          {/* Payment Methods */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">
+              Payment Method
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {paymentMethods.map((method) => (
+                <div
+                  key={method.id}
+                  onClick={() => setSelectedPayment(method.id)}
+                  className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition
+                    ${selectedPayment === method.id
+                      ? "ring-2 ring-purple-600 bg-purple-50"
+                      : "border hover:shadow-md"
+                    }`}
+                >
+                  <div
+                    className={`w-11 h-11 flex items-center justify-center rounded-full text-white ${method.color}`}
+                  >
+                    {method.icon}
+                  </div>
+                  <div>
+                    <p className="font-semibold">{method.name}</p>
+                    <p className="text-sm text-gray-500">{method.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={handleCancel}
+              className="flex-1 border border-gray-400 py-3 rounded-xl hover:bg-gray-100 transition"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handlePayment}
+              className="flex-1 bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition"
+            >
+              Proceed to Payment
+            </button>
           </div>
         </div>
 

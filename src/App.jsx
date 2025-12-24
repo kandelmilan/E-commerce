@@ -23,6 +23,8 @@ import OrderConfirm from "./component/Header/OrderComform";
 import Setting from "./Admin/component/Setting";
 import Profile from "./Admin/component/Profile";
 import CategoriesPage from "./component/Header/Page";
+import Payment from "./component/Header/PaymentOption";
+import PaymentOption from "./component/Header/PaymentOption";
 
 
 
@@ -41,6 +43,7 @@ function App() {
           <Route path="/wishList" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orderconform" element={<OrderConfirm />} />
+          <Route path="/paymentOption" element={<PaymentOption />} />
           <Route path="/error" element={<Error />} />
           <Route path="/cart" element={
             <ProtectedRoute>
@@ -48,7 +51,7 @@ function App() {
             </ProtectedRoute>
           } />
 
-          <Route path="/pages" element={<CategoriesPage/>} />
+          <Route path="/pages" element={<CategoriesPage />} />
         </Route>
 
         <Route path="login" element={<LoginForm />} />
@@ -67,7 +70,7 @@ function App() {
           <Route path="products" element={<Product />} />
           <Route path="users" element={<User />} />
           <Route path="settings" element={<Setting />} />
-           <Route path="Profile" element={<Profile />} />
+          <Route path="Profile" element={<Profile />} />
         </Route>
       </Routes>
 
