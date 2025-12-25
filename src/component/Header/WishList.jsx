@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromWishlist, clearWishlist } from "../../redux/Reducers/wishListSlice";
 import { addtocart } from "../../redux/Reducers/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
-import { IoCartOutline } from "react-icons/io5"; 
+import { IoCartOutline } from "react-icons/io5";
 
 const Wishlist = () => {
   const wishlistItems = useSelector((state) => state.wishlist.items || []);
@@ -47,7 +47,7 @@ const Wishlist = () => {
                     onClick={() => handleAddToCart(item)}
                     className="flex items-center gap-1 bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded transition"
                   >
-                    <IoCartOutline /> 
+                    <IoCartOutline />
                   </button>
                   <button
                     onClick={() => handleRemove(item.id)}

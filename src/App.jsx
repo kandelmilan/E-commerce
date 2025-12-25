@@ -25,6 +25,7 @@ import Profile from "./Admin/component/Profile";
 import CategoriesPage from "./component/Header/Page";
 import Payment from "./component/Header/PaymentOption";
 import PaymentOption from "./component/Header/PaymentOption";
+import MyOrders from "./component/Header/MyorderList";
 
 
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="/orderconform" element={<OrderConfirm />} />
           <Route path="/paymentOption" element={<PaymentOption />} />
           <Route path="/error" element={<Error />} />
+          <Route path="/order" element={<MyOrders />} />
           <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />
