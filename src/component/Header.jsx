@@ -9,21 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { addToWishlist } from "../redux/Reducers/wishListSlice";
 
-
-
-
-
-
 function Header() {
   const user = useSelector((state) => state.user);
   const cartItems = useSelector((state) => state.cart.item);
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   // for wishList
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.items || []);
-  // end of wishlist
-
+  
   const [showCart, setShowCart] = useState(false);
   const cartRef = useRef(null);
   const navigate = useNavigate();
@@ -64,7 +58,7 @@ function Header() {
                   user.userName
                 ) : (
                   <div className="flex gap-2 items-center cursor-pointer"
-                    onClick={()=>{navigate("/login")}}>
+                    onClick={() => { navigate("/login") }}>
                     <p>Login</p>
                     <FaRegUser />
                   </div>
@@ -85,7 +79,7 @@ function Header() {
             {/* Cart Icon */}
             <div className="relative cursor-pointer">
               <BsCart
-                size={24}
+                size={20}
                 className="text-gray-700 hover:text-indigo-600 transition-colors"
                 onClick={() => navigate("/cart")}
               />
@@ -104,7 +98,8 @@ function Header() {
       {/* Main Nav */}
       <section className="hidden md:flex justify-between items-center container mx-auto mt-3 mb-3">
         <div className="flex items-center gap-24">
-          <h1 className="font-[600] text-[Josefin Sans] text-[34px]">Hekto</h1>
+          <h1 className="font-[600] text-[Josefin Sans] text-[34px]"
+            onClick={() => navigate("/")}>Hekto</h1>
           <nav className="flex items-center gap-5 list-none">
             <ul className="flex gap-6">
               <li>

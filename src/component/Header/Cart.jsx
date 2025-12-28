@@ -9,7 +9,7 @@ import {
 } from "../../redux/Reducers/cartSlice";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";  
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.item || []);
@@ -28,7 +28,7 @@ const Cart = () => {
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
-    toast.error("Product removed from cart"); 
+    toast.error("Product removed from cart");
   };
 
   const handleBuyNow = (item) => {
@@ -87,6 +87,7 @@ const Cart = () => {
                     src={item.chairimage || item.image}
                     alt={item.title}
                     className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
+
                   />
                 </div>
 
