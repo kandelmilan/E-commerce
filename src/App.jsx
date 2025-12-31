@@ -25,7 +25,8 @@ import Profile from "./Admin/component/Profile";
 import CategoriesPage from "./component/Header/Page";
 import Payment from "./component/Header/PaymentOption";
 import PaymentOption from "./component/Header/PaymentOption";
-import MyOrders from "./component/Header/MyorderList";
+import MyOrders from "./component/Header/Myorder";
+
 
 
 

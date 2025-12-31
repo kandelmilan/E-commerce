@@ -10,7 +10,7 @@ function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "",
+    fullname: "",
     email: "",
     password: "",
     role: "buyer",
@@ -49,29 +49,30 @@ function SignupForm() {
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
-          {/* Username */}
+          {/* Full Name */}
           <div className="mb-4">
             <label
-              htmlFor="username"
+              htmlFor="fullname"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Username
+              Full Name
             </label>
             <div className="relative">
               <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
               <input
-                id="username"
+                id="fullname"
                 type="text"
-                placeholder="Enter your username"
-                value={formData.username}
+                placeholder="Enter your full name"
+                value={formData.fullname}
                 onChange={(e) =>
-                  setFormData({ ...formData, username: e.target.value })
+                  setFormData({ ...formData, fullname: e.target.value })
                 }
                 className="w-full border border-gray-300 rounded-md pl-10 pr-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#0A174E]"
                 required
               />
             </div>
           </div>
+
 
           {/* Email */}
           <div className="mb-4">
